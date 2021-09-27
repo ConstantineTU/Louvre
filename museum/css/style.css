@@ -1357,6 +1357,14 @@ input::-webkit-inner-spin-button {
   padding: 13px 14px 13px 0px;
 }
 
+.parallax {
+  width: 100%;
+  height: 400px;
+  background: url("../assets/img/tickets/parallax.jpg") no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .contacts-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1372,11 +1380,11 @@ input::-webkit-inner-spin-button {
 }
 
 .contacts-list__subtitle {
-  margin: 10px 0px 0px 0px;
   font-size: 28px;
   font-style: medium;
   font-weight: 500;
   line-height: 33px;
+  margin: 0px 0px 35px 0px;
 }
 
 .contacts-list__contacts {
@@ -1386,7 +1394,7 @@ input::-webkit-inner-spin-button {
 .contacts-list__contact {
   font-weight: 300;
   line-height: 26px;
-  padding: 20px 0px 0px 0px;
+  margin: 0px 0px 25px 0px;
 }
 
 @media (max-width: 1452px) {
