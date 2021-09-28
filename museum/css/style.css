@@ -875,16 +875,30 @@ footer {
   -o-transition: background 450ms ease-in;
   transition: background 450ms ease-in;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   cursor: pointer;
 }
 
-.video-progress::-webkit-slider-thumb {
-  width: 20px;
-  height: 20px;
+.video-progress::-webkit-slider-thumb,
+.video .volume-progress.__audio::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   -webkit-appearance: none;
+          appearance: none;
   cursor: ew-resize;
-  background: #434343;
+  background: #ffffff;
+}
+
+.video-progress::-ms-thumb,
+.video .volume-progress.__audio::-ms-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  appearance: none;
+  cursor: ew-resize;
+  background: #ffffff;
 }
 
 .video-descr {
@@ -1091,21 +1105,21 @@ footer {
   background: url("../assets/img/icons/video-frame/youtube_icon_play_darkred.svg") center no-repeat;
 }
 
-.gallary {
+.gallery {
   padding: 75px 0px 0px 0px;
 }
 
-.gallary-tittle {
+.gallery-tittle {
   margin: 0px 0px 75px 0px;
 }
 
-.gallary-items {
+.gallery-items {
   height: 1960px;
   overflow-y: hidden;
   position: relative;
 }
 
-.gallary_inner-items {
+.gallery_inner-items {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -1117,66 +1131,66 @@ footer {
   height: 2850px;
 }
 
-.gallary-img {
+.gallery-img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.gallary-item {
+.gallery-item {
   position: relative;
 }
 
-.gallary-item:nth-child(3n + 1) {
+.gallery-item:nth-child(3n + 1) {
   -ms-grid-column: 1;
       grid-column-start: 1;
   top: 50px;
 }
 
-.gallary-item:nth-child(3n + 2) {
+.gallery-item:nth-child(3n + 2) {
   -ms-grid-column: 2;
       grid-column-start: 2;
 }
 
-.gallary-item:nth-child(3n + 3) {
+.gallery-item:nth-child(3n + 3) {
   -ms-grid-column: 3;
       grid-column-start: 3;
   top: 50px;
 }
 
-.gallary-item:nth-child(2n + 2) {
+.gallery-item:nth-child(2n + 2) {
   -webkit-transition-delay: 0.2s;
        -o-transition-delay: 0.2s;
           transition-delay: 0.2s;
 }
 
-.gallary-item:nth-child(9) {
+.gallery-item:nth-child(9) {
   -ms-grid-row-span: 4;
   grid-row-end: span 4;
 }
 
-.gallary-item:nth-child(10) {
+.gallery-item:nth-child(10) {
   -ms-grid-row-span: 2;
   grid-row-end: span 2;
 }
 
-.gallary-item.long {
+.gallery-item.long {
   -ms-grid-row-span: 5;
   grid-row-end: span 5;
 }
 
-.gallary-item.medium {
+.gallery-item.medium {
   -ms-grid-row-span: 4;
   grid-row-end: span 4;
 }
 
-.gallary-item.short {
+.gallery-item.short {
   -ms-grid-row-span: 3;
   grid-row-end: span 3;
 }
 
-.gallary-shadow {
+.gallery-shadow {
   position: absolute;
   z-index: 2;
   bottom: 0;
@@ -1413,6 +1427,9 @@ footer {
   -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
           transform: rotate(45deg);
+  -webkit-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
 }
 
 .boocking-tickets__close::before {
@@ -1425,6 +1442,21 @@ footer {
   -webkit-transform: rotate(135deg);
       -ms-transform: rotate(135deg);
           transform: rotate(135deg);
+  -webkit-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.boocking-tickets__close:hover::after {
+  -webkit-transform: rotate(245deg);
+      -ms-transform: rotate(245deg);
+          transform: rotate(245deg);
+}
+
+.boocking-tickets__close:hover::before {
+  -webkit-transform: rotate(335deg);
+      -ms-transform: rotate(335deg);
+          transform: rotate(335deg);
 }
 
 .boocking-tickets__container {
@@ -1531,26 +1563,31 @@ footer {
 .form-input::-webkit-input-placeholder {
   font-size: 18px;
   opacity: 1;
+  color: #000;
 }
 
 .form-input::-moz-placeholder {
   font-size: 18px;
   opacity: 1;
+  color: #000;
 }
 
 .form-input:-ms-input-placeholder {
   font-size: 18px;
   opacity: 1;
+  color: #000;
 }
 
 .form-input::-ms-input-placeholder {
   font-size: 18px;
   opacity: 1;
+  color: #000;
 }
 
 .form-input::placeholder {
   font-size: 18px;
   opacity: 1;
+  color: #000;
 }
 
 .form-input:focus {
@@ -1727,7 +1764,7 @@ footer {
       -ms-flex-pack: center;
           justify-content: center;
   width: 35px;
-  height: 21px;
+  height: 22px;
   padding: 0;
 }
 
@@ -1747,10 +1784,10 @@ footer {
       -ms-flex-pack: center;
           justify-content: center;
   width: 33px;
-  height: 21px;
+  height: 22px;
   padding: 0;
-  border-left: solid 3px var(--bg-dark);
-  border-right: solid 3px var(--bg-dark);
+  border-left: solid 2px var(--bg-dark);
+  border-right: solid 2px var(--bg-dark);
 }
 
 .form-number__container {
