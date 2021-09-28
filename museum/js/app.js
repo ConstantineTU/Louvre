@@ -70,5 +70,58 @@ let galleryTransform = function () {
 }
 galleryTransform()
 
+// Button
+
+const ticketsBtn = document.querySelector('.tickets-btn')
+const boockingTicketsContainer = document.querySelector('.boocking-tickets__container')
+const boockingTicketsClose = document.querySelector('.boocking-tickets__close')
+const overlay = document.querySelector('.overlay')
+
+
+ticketsBtn.onclick = function () {
+	if (boockingTicketsContainer.classList[1] === 'active') {
+		boockingTicketsContainer.classList.remove('active')
+		overlay.classList.remove('active')
+	} else {
+		boockingTicketsContainer.classList.add('active')
+		overlay.classList.add('active')
+	}
+}
+boockingTicketsClose.onclick = function () {
+	boockingTicketsContainer.classList.remove('active')
+	overlay.classList.remove('active')
+}
+overlay.onclick = function () {
+	boockingTicketsContainer.classList.remove('active')
+	overlay.classList.remove('active')
+}
+
+
+
+
+// let buttonPay = document.querySelector('.form-payment-btn')
+
+
+
+// buttonPay.addEventListener('mousedown', function (e) {
+// 	console.log(e)
+// 	let x = e.clientX
+// 	let y = e.clientY
+// 	let buttonTop = e.target.offsetTop
+// 	let buttonLeft = e.target.offsetLeft
+// 	let xInside = x - buttonLeft
+// 	let yInside = y - buttonTop
+// 	let circleEffect = document.createElement('div')
+// 	circleEffect.classList.add('ripple')
+// 	circleEffect.style.top = yInside + 'px'
+// 	circleEffect.style.left = xInside + 'px'
+// 	console.log(circleEffect)
+// 	buttonPay.appendChild(circleEffect)
+
+
+// })
+
+//
+
 
 

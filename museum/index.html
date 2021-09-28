@@ -19,13 +19,18 @@
 	<div class="wrapper">
 		<header class="header dark-section">
 			<div class="header__content _container">
+
 				<div class="header-container">
+
 					<a href="index.html">
 						<div class="logo">
+
 							<div class="logo__img"></div>
 							<h1 class="title">Louvre</h1>
+
 						</div>
 					</a>
+
 					<nav class="header-nav">
 						<ul class="nav-menu">
 							<li class="nav-menu__link"><a href="#Visiting">Visiting</a></li>
@@ -40,6 +45,7 @@
 			</div>
 		</header>
 		<div class="page">
+
 			<main class="main">
 				<section id="Welcome" class="welcome section dark-section">
 					<div class="content  _container">
@@ -330,8 +336,11 @@
 								</div>
 							</div>
 						</div>
+						<div class="overlay"></div>
 						<div class="boocking-tickets__container">
-							<div class="boocking-tickets__close"></div>
+							<div class="boocking-tickets__close-wrap">
+								<div class="boocking-tickets__close"></div>
+							</div>
 							<div class="form-container">
 								<form class="boocking-tickets-form" action="">
 									<div class="boocking-tickets__left-column">
@@ -346,7 +355,8 @@
 													<input class="form-date form-input" type="date" name="formDate" id="formDate">
 												</div>
 												<div class="form-arrow">
-													<input class="form-time form-input" type="time" name="formTime" id="formTime">
+													<input class="form-time form-input" list="StimeList" type="time" name="formTime"
+														id="formTime">
 												</div>
 											</div>
 											<input class="form-name form-input" type="text" name="formName" id="formName"
@@ -367,30 +377,32 @@
 													Entry ticket
 												</h5>
 												<div class="form-container__age">
-													<p class="tickets-age age-basic">Basic 18+</p>
-													<div class="tickets-number__container">
-														<button class="number-minus" type="button"
+													<p class="tickets-age age-basic">Basic 18+ (20 €)</p>
+													<div class="tickets-number__container form-number__container">
+														<button class="number-minus form-minus" type="button"
 															onclick="this.nextElementSibling.stepDown()">
-															<img src="assets/img/icons/tickets/–.svg" alt="- image">
+															<img src="assets/img/icons/tickets/booking/-.svg" alt="- image">
 														</button>
-														<input type="number" min="0" max="20" value="1" readonly class="number">
-														<button class="number-plus" type="button"
+														<input type="number" min="0" max="20" value="2" readonly
+															class="number form-number">
+														<button class="number-plus form-plus" type="button"
 															onclick="this.previousElementSibling.stepUp()">
-															<img src="assets/img/icons/tickets/+.svg" alt="+ image">
+															<img src="assets/img/icons/tickets/booking/+.svg" alt="+ image">
 														</button>
 													</div>
 												</div>
 												<div class="form-container__age">
-													<p class="tickets-age age-senior">Senior 65+</p>
-													<div class="tickets-number__container">
-														<button class="number-minus" type="button"
+													<p class="tickets-age age-senior">Senior 65+ (10 €)</p>
+													<div class="tickets-number__container form-number__container">
+														<button class="number-minus form-minus" type="button"
 															onclick="this.nextElementSibling.stepDown()">
-															<img src="assets/img/icons/tickets/–.svg" alt="- image">
+															<img src="assets/img/icons/tickets/booking/-.svg" alt="- image">
 														</button>
-														<input type="number" min="0" max="20" value="1" readonly class="number">
-														<button class="number-plus" type="button"
+														<input type="number" min="0" max="20" value="2" readonly
+															class="number form-number">
+														<button class="number-plus form-plus" type="button"
 															onclick="this.previousElementSibling.stepUp()">
-															<img src="assets/img/icons/tickets/+.svg" alt="+ image">
+															<img src="assets/img/icons/tickets/booking/+.svg" alt="+ image">
 														</button>
 													</div>
 												</div>
@@ -402,9 +414,9 @@
 											<div class="form-overview-description">
 												<h4 class="form-overview-tittle">Overview</h4>
 												<p class="form-overview-subtittle">Tour to Louvre</p>
-												<p class="form-overview-date">Friday, August 19</p>
-												<p class="form-overview-time">16 : 30</p>
-												<p class="form-overview-ticket">Temporary exhibition</p>
+												<div class="form-overview-date">Friday, August 19</div>
+												<div class="form-overview-time">16 : 30</div>
+												<div class="form-overview-ticket">Temporary exhibition</div>
 											</div>
 											<div class="form-overview-picture">
 												<img src="assets/img/tickets/boocking_tickets_img.jpg" alt="louvre_img">
@@ -436,6 +448,9 @@
 											<div class="form-overview-pay-card__back">
 											</div>
 										</div>
+										<div class="form-payment-btn__wrap">
+											<button type="button" class="form-payment-btn">Book</button>
+										</div>
 									</div>
 								</form>
 							</div>
@@ -466,6 +481,7 @@
 					</div>
 				</section>
 			</main>
+
 		</div>
 
 		<footer class="footer dark-section">
@@ -524,6 +540,8 @@
 						</ul>
 					</div>
 				</div>
+
+
 			</div>
 			<div class="line"></div>
 			<div class="footer__content _container">
@@ -532,6 +550,8 @@
 					<div><a href="https://rs.school/" target="_blank">The Rolling Scopes School</a></div>
 					<div><a href="https://github.com/ConstantineTU" target="_blank">ConstantineTU</a></div>
 				</div>
+
+
 			</div>
 		</footer>
 	</div>
