@@ -29,7 +29,7 @@ if (localStorage.getItem('volume-progress')) {
 
 // Section Gallery
 let galleryTransform = function () {
-	const pictureInnerContainer = document.querySelector('.gallary_inner-items');
+	const pictureInnerContainer = document.querySelector('.gallery_inner-items');
 	const arrPictures = [
 		"./assets/img/gallery/galery1.jpg",
 		"./assets/img/gallery/galery2.jpg",
@@ -55,16 +55,16 @@ let galleryTransform = function () {
 		}
 	}
 	(arrPictures), arrPictures.map((t => {
-		const gallaryItem = document.createElement("div");
-		gallaryItem.classList.add("gallary-item");
+		const galleryItem = document.createElement("div");
+		galleryItem.classList.add("gallery-item");
 		const galleryImg = document.createElement("img");
-		galleryImg.classList.add("gallary-img"), galleryImg.src = t, galleryImg.alt = "Gallery Picture",
-			pictureInnerContainer.append(gallaryItem), gallaryItem.append(galleryImg), galleryImg.onload = function () {
+		galleryImg.classList.add("gallery-img"), galleryImg.src = t, galleryImg.alt = "Gallery Picture",
+			pictureInnerContainer.append(galleryItem), galleryItem.append(galleryImg), galleryImg.onload = function () {
 				//console.log(this.height)
 				const imgHeight = this.height;
-				imgHeight >= 570 ? gallaryItem.classList.add("long") :
-					imgHeight >= 456 && imgHeight < 570 ? gallaryItem.classList.add("medium") :
-						imgHeight < 456 && gallaryItem.classList.add("short")
+				imgHeight >= 570 ? galleryItem.classList.add("long") :
+					imgHeight >= 456 && imgHeight < 570 ? galleryItem.classList.add("medium") :
+						imgHeight < 456 && galleryItem.classList.add("short")
 			}
 	}));
 }
@@ -122,9 +122,13 @@ overlay.onclick = function () {
 // })
 
 //
-console.group('%cCross-check: Museum, ConstantineTU', 'color: red')
+console.group('%cCross-check: Museum, ConstantineTU', 'color: green')
+console.log('%cНе выполненные пункты: кнопке "Book" в форме покупки билетов не добавлен ripple - (0 баллов из 2 возможных)', 'color: red')
 console.log(
 	`Score 150 / 150
+
+	Выполненные пункты:
+	
 
 	 Вёрстка валидная + 10
 			проверено валидатором https://validator.w3.org/ – "Document checking completed. No errors or warnings to show." +10
@@ -177,9 +181,13 @@ console.log(
 			можно передвигать ползунки громкости и прогресс - бар видео, при этом цвет шкалы до и после ползунка отличается и соответствует макету + 2
 			кликами по кнопкам + и - в секции Tiskets можно менять количество билетов Basic и Senior от 0 до 20 + 2
 			кнопке "Book" в форме покупки билетов добавлен ripple - эффект Демо 0
-			при перезагрузке(обновлении) страницы картины в блоке Galery отображаются в рандомном порядке + 10
-			Итого 158 баллов из 160`
+			при перезагрузке(обновлении) страницы картины в блоке Galery отображаются в рандомном порядке + 10`
 )
+console.log('	%cИтого 158 баллов из 160', 'color: green')
+
+console.log('%cПрошу связаться со мной в дискорд https://discordapp.com/users/414360051101466624, если найдете ошибки помимо указанных мной', 'color: blue')
+console.log('%cСпасибо за проверку и удачи в учёбе!', 'color: green')
+
 console.groupEnd()
 
 
