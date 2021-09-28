@@ -642,6 +642,10 @@ footer {
   background: url("../assets/img/welcome/arrow_right.svg") center no-repeat;
 }
 
+.welcome__button-slider {
+  background: rgba(0, 0, 0, 0);
+}
+
 .title-border {
   position: relative;
 }
@@ -794,6 +798,7 @@ footer {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  padding-bottom: 5px;
 }
 
 .frame:hover {
@@ -809,13 +814,21 @@ footer {
   padding: 0px 0px 40px 0px;
 }
 
+.video__button-playlist {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.video__button-frame {
+  background-color: rgba(0, 0, 0, 0);
+}
+
 .video-img {
   position: relative;
 }
 
 .video-img__frame {
   position: absolute;
-  top: 215px;
+  top: 209px;
   left: 610px;
   cursor: pointer;
   border-radius: 50%;
@@ -1381,14 +1394,12 @@ footer {
   position: relative;
   width: 35px;
   height: 40px;
-  top: 50px;
-  right: 50px;
 }
 
 .boocking-tickets__close-wrap {
   position: absolute;
-  top: 25px;
-  right: -25px;
+  top: 21px;
+  right: 25px;
   cursor: pointer;
 }
 
