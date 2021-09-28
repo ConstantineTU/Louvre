@@ -1487,6 +1487,7 @@ footer {
   line-height: 21px;
   position: relative;
   margin: 0px 0px 72px 0px;
+  color: var(--dark-red);
 }
 
 .boocking-tickets-subtitle::before {
