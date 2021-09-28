@@ -450,6 +450,10 @@ footer {
   padding: 74px 0px 49px 0px;
 }
 
+.welcome__button-slider {
+  background: rgba(0, 0, 0, 0);
+}
+
 .welcome-container {
   height: 660px;
   position: relative;
@@ -640,10 +644,6 @@ footer {
 
 .welcome-slider__arrows-right {
   background: url("../assets/img/welcome/arrow_right.svg") center no-repeat;
-}
-
-.welcome__button-slider {
-  background: rgba(0, 0, 0, 0);
 }
 
 .title-border {
