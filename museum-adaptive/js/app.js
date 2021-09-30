@@ -95,6 +95,62 @@ overlay.onclick = function () {
 	boockingTicketsContainer.classList.remove('active')
 	overlay.classList.remove('active')
 }
+// Burger-menu
+const burgerMenuWrap = document.querySelector('.header__burger')
+const navMenuLink = document.querySelectorAll('.nav-menu__link')
+const contentDocument = document.querySelectorAll('.content._container')
+const welcomeOverlay = document.querySelector('.welcome__overlay')
+
+
+function getMenu(t) {
+	const burgerMenu = document.querySelector('.header__burger-menu')
+	const burgerMenuActive = document.querySelector('.header__burger-menu__active')
+	const headerNav = document.querySelector('.header-nav')
+	const sectionTitle = document.querySelector('.section-title')
+	const sectionSubTittle = document.querySelector('.section-subtittle')
+	const welcomeLink = document.querySelector('.welcome-link')
+
+	const lockBody = document.querySelector('body')
+
+
+
+	if (burgerMenuActive.classList[1] !== 'active') {
+		setTimeout(() => {
+			burgerMenuActive.classList.toggle('active')
+		}, t);
+		burgerMenu.classList.toggle('active')
+		headerNav.classList.toggle('active')
+		sectionTitle.classList.toggle('active')
+		sectionSubTittle.classList.toggle('active')
+		welcomeLink.classList.toggle('active')
+		welcomeOverlay.classList.toggle('active')
+		lockBody.classList.toggle('_lock')
+	} else {
+		setTimeout(() => {
+			burgerMenu.classList.toggle('active')
+			headerNav.classList.toggle('active')
+			sectionTitle.classList.toggle('active')
+			sectionSubTittle.classList.toggle('active')
+			welcomeLink.classList.toggle('active')
+
+		}, t);
+		burgerMenuActive.classList.toggle('active')
+		welcomeOverlay.classList.toggle('active')
+		lockBody.classList.toggle('_lock')
+	}
+}
+for (let link of navMenuLink) {
+	link.onclick = function () { getMenu(0) }
+}
+welcomeOverlay.onclick = function () {
+	getMenu(1000)
+}
+contentDocument.onclick = function () {
+	getMenu(1000)
+}
+burgerMenuWrap.onclick = function () {
+	getMenu(1000)
+}
 
 
 
