@@ -151,9 +151,13 @@ contentDocument.onclick = function () {
 burgerMenuWrap.onclick = function () {
 	getMenu(1000)
 }
+// Reload-video
+let iframeVideo = document.querySelectorAll('.video-iframe')
 
-
-
+for (let iframe of iframeVideo) {
+	iframe.setAttribute('loading', 'lazy')
+	console.log(iframe.getAttribute('loading'))
+}
 
 // let buttonPay = document.querySelector('.form-payment-btn')
 
