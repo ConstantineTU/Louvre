@@ -61,10 +61,17 @@ let galleryTransform = function () {
 		galleryImg.classList.add("gallery-img"), galleryImg.src = t, galleryImg.alt = "Gallery Picture",
 			pictureInnerContainer.append(galleryItem), galleryItem.append(galleryImg), galleryImg.onload = function () {
 				//console.log(this.height)
-				const imgHeight = this.height;
-				imgHeight >= 570 ? galleryItem.classList.add("long") :
-					imgHeight >= 456 && imgHeight < 570 ? galleryItem.classList.add("medium") :
-						imgHeight < 456 && galleryItem.classList.add("short")
+				const imgHeight = this.naturalHeight;
+				if (imgHeight >= 570) {
+					galleryItem.classList.add("long")
+				} else if (
+					imgHeight >= 456 && imgHeight < 570) {
+					galleryItem.classList.add("medium")
+				} else if (imgHeight < 456) {
+					galleryItem.classList.add("short")
+				}
+
+
 			}
 	}));
 }
@@ -156,7 +163,6 @@ let iframeVideo = document.querySelectorAll('.video-iframe')
 
 for (let iframe of iframeVideo) {
 	iframe.setAttribute('loading', 'lazy')
-	console.log(iframe.getAttribute('loading'))
 }
 
 // let buttonPay = document.querySelector('.form-payment-btn')
