@@ -70,8 +70,6 @@ let galleryTransform = function () {
 				} else if (imgHeight < 456) {
 					galleryItem.classList.add("short")
 				}
-
-
 			}
 	}));
 }
@@ -86,75 +84,71 @@ const overlay = document.querySelector('.overlay')
 const popap = document.querySelector('.boocking-tickets__popap')
 const lockBody = document.querySelector('body')
 
-ticketsBtn.onclick = function () { showBookingTickets() }
 function showBookingTickets() {
 	if (boockingTicketsContainer.classList[1] === 'active' && overlay.classList[1] === 'active') {
 		boockingTicketsContainer.classList.remove('active')
 		overlay.classList.remove('active')
 		popap.classList.remove('open')
 		lockBody.classList.remove('_lock')
-
 	} else {
 		boockingTicketsContainer.classList.add('active')
 		overlay.classList.add('active')
 		popap.classList.add('open')
 		lockBody.classList.add('_lock')
-
 	}
 }
-boockingTicketsClose.onclick = function () {
-	showBookingTickets()
+ticketsBtn.onclick = function () { showBookingTickets() }
+boockingTicketsClose.onclick = function () { showBookingTickets() }
+overlay.onclick = function () { showBookingTickets() }
 
-}
-overlay.onclick = function () {
-	showBookingTickets()
-
-}
 // Burger-menu
 const burgerMenuWrap = document.querySelector('.header__burger')
 const navMenuLink = document.querySelectorAll('.nav-menu__link')
 const contentDocument = document.querySelectorAll('.content._container')
 const welcomeOverlay = document.querySelector('.welcome__overlay')
 
+const burgerMenu = document.querySelector('.header__burger-menu')
+const burgerMenuActive = document.querySelector('.header__burger-menu__active')
+const headerNav = document.querySelector('.header-nav')
+const sectionTitle = document.querySelector('.section-title')
+const sectionSubTittle = document.querySelector('.section-subtittle')
+const welcomeLink = document.querySelector('.welcome-link')
 
 function getMenu(t) {
-	const burgerMenu = document.querySelector('.header__burger-menu')
-	const burgerMenuActive = document.querySelector('.header__burger-menu__active')
-	const headerNav = document.querySelector('.header-nav')
-	const sectionTitle = document.querySelector('.section-title')
-	const sectionSubTittle = document.querySelector('.section-subtittle')
-	const welcomeLink = document.querySelector('.welcome-link')
-
-
-
-
 	if (burgerMenuActive.classList[1] !== 'active') {
-		setTimeout(() => {
-			burgerMenuActive.classList.toggle('active')
-		}, t);
-		burgerMenu.classList.toggle('active')
-		headerNav.classList.toggle('active')
-		sectionTitle.classList.toggle('active')
-		sectionSubTittle.classList.toggle('active')
-		welcomeLink.classList.toggle('active')
-		welcomeOverlay.classList.toggle('active')
-		lockBody.classList.toggle('_lock')
+		showBurgerMenu(t)
 	} else {
-		setTimeout(() => {
-			burgerMenu.classList.toggle('active')
-			headerNav.classList.toggle('active')
-			sectionTitle.classList.toggle('active')
-			sectionSubTittle.classList.toggle('active')
-			welcomeLink.classList.toggle('active')
-
-		}, t);
-		burgerMenuActive.classList.toggle('active')
-		welcomeOverlay.classList.toggle('active')
-		lockBody.classList.toggle('_lock')
+		closeBurgerMenu(t)
 	}
 }
+
+function showBurgerMenu(t) {
+	setTimeout(() => {
+		burgerMenuActive.classList.add('active')
+	}, t);
+	burgerMenu.classList.add('active')
+	headerNav.classList.add('active')
+	sectionTitle.classList.add('active')
+	sectionSubTittle.classList.add('active')
+	welcomeLink.classList.add('active')
+	welcomeOverlay.classList.add('active')
+	lockBody.classList.add('_lock')
+}
+function closeBurgerMenu(t) {
+	setTimeout(() => {
+		burgerMenu.classList.remove('active')
+		headerNav.classList.remove('active')
+		sectionTitle.classList.remove('active')
+		sectionSubTittle.classList.remove('active')
+		welcomeLink.classList.remove('active')
+
+	}, t);
+	burgerMenuActive.classList.remove('active')
+	welcomeOverlay.classList.remove('active')
+	lockBody.classList.remove('_lock')
+}
 for (let link of navMenuLink) {
-	link.onclick = function () { getMenu(0) }
+	link.onclick = function () { closeBurgerMenu(0) }
 }
 welcomeOverlay.onclick = function () {
 	getMenu(1000)
@@ -195,70 +189,66 @@ for (let iframe of iframeVideo) {
 // })
 
 //
-console.group('%cCross-check: Museum, ConstantineTU', 'color: green')
-console.log('%cНе выполненные пункты: кнопке "Book" в форме покупки билетов не добавлен ripple - (0 баллов из 2 возможных)', 'color: red')
+console.group('%cCross-check: Museum-adaptive, ConstantineTU', 'color: red')
+console.log('%cНе выполненные пункты: все пункты выполнены', 'color: green')
 console.log(
 	`Score 150 / 150
 
 	Выполненные пункты:
-	
-
-	 Вёрстка валидная + 10
-			проверено валидатором https://validator.w3.org/ – "Document checking completed. No errors or warnings to show." +10
-	 вёрстка семантическая + 24
-			header, main, footer + 2
-			семь элементов
-			(по количеству секций) + 2
-			только один заголовок h1 + 2
-			семь заголовков h2(по количеству секций) + 2
-			шесть заголовков h3(по количеству карточек) + 2
-			два элемента nav(основная и вспомогательная панель навигации) + 2
-			три списка ul - li - a(основная и вспомогательная панель навигации, ссылки на соцсети) + 2
-			тринадцать кнопок button(четыре из них в секции Video, пять в секции Tickets, по две - стрелки слайдера и плейлиста) + 2
-			три тега input type = "radio"(в секции Tickets) + 2
-			два тега input type = "number"(в секции Tickets) + 2
-			два тега input type = "range"(громкось и прогрес - бар видео) + 2
-			для всех элементов img указан обязательный атрибут alt + 2
-	 Вёрстка соответствует макету + 45
-			блок header + 5
-			секция Welcome + 5
-			секция Visiting + 5
-			секция Explore + 5
-			секция Video + 5
-			секция Gallery + 5
-			секция Tickets + 5
-			секция Contacts + 5
-			блок footer + 5
-	 Форма покупки билетов + 22
-			форма плавно выдвигается слева при открытии и плавно возвращается назад при закрытии.В открытом состоянии под формой есть полупрозрачный overlay, который занимает весь экран.Форма и overlay прокручиваются вместе со страницей + 2
-			форма открывается при клике по кнопке Buy Now в секции Tickets и закрывается кликом по иконке с крестиком в верхнем правом углу или кликом по overlay + 2
-			при вёрстке формы используются следующие элементы: form, input type = "date", input type = "time", input type = "text", input type = "email", input type = "tel", input type = "number", select + 8
-			вёрстка формы соответствует макету + 10
-	 Требования к css + 18
-			добавлен favicon + 2
-			для построения сетки используются флексы или гриды + 2
-			при уменьшении масштаба страницы браузера вёрстка размещается по центру, а не сдвигается в сторону + 2
-			фоновый цвет каждого блока и секции тянется на всю ширину страницы + 2
-			иконки добавлены в формате.svg.SVG может быть добавлен любым способом.Обращаем внимание на формат, а не на способ добавления + 2
-			расстояние между буквами, там, где это требуется по макету, регулируется css - свойством letter - spacing + 2
-			переключаются радиокнопки в блоке Tickets, одновременно может быть выбрана только одна кнопка + 2
-			в блоке Contacts правильно указанны ссылки на почту mailto и на телефон tel + 2
-			в футере добавлены ссылки на соцсети.Круглая граница вокруг иконок соцсетей выполнена при помощи css + 2
-	 Интерактивность, реализуемая через css + 25 из 25
-			плавная прокрутка по якорям + 5
-			параллакс + 5
-			при кликам по кнопке Discover the Louvre и карточкам секции Visiting не открываются полноэкранные панорамы Google
-			Street View встроенные в страницы вашего сайта при помощи iframe 5
-			изменение стиля интерактивных элементов при наведении и клике + 10
-	 Интерактивность, реализуемая через js + 14
-			можно передвигать ползунки громкости и прогресс - бар видео, при этом цвет шкалы до и после ползунка отличается и соответствует макету + 2
-			кликами по кнопкам + и - в секции Tiskets можно менять количество билетов Basic и Senior от 0 до 20 + 2
-			кнопке "Book" в форме покупки билетов добавлен ripple - эффект Демо 0
-			при перезагрузке(обновлении) страницы картины в блоке Galery отображаются в рандомном порядке + 10`
+	 Вёрстка соответствует макету. Ширина экрана 1024px +40
+			Блок header +4
+			Секция Welcome +4
+			Секция Visiting +4
+			Секция Explore +4
+			Секция Video +4
+			Секция Gallery +4
+			Секция Tickets +4
+			Форма покупки билетов +4
+			Секция Contacts +4
+			Блок footer +4
+	 Вёрстка соответствует макету. Ширина экрана 768px +40
+			Блок header +4
+			Секция Welcome +4
+			Секция Visiting +4
+			Секция Explore +4
+			Секция Video +4
+			Секция Gallery +4
+			Секция Tickets +4
+			Форма покупки билетов +4
+			Секция Contacts +4
+			Блок footer +4
+	 Вёрстка соответствует макету. Ширина экрана 420px +40
+			Блок header +4
+			Секция Welcome +4
+			Секция Visiting +4
+			Секция Explore +4
+			Секция Video +4
+			Секция Gallery +4
+			Секция Tickets +4
+	 Форма покупки билетов +4
+			Секция Contacts +4
+			Блок footer +4
+	 Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +6
+	 Совмещается адаптивная и респонсивная (резиновая) вёрстка +14 При изменении ширины экрана плавно изменяются размеры:
+			слайдера в секции Welcome +2
+			слайдера сравнения изображений в секции Explore +2
+			кастомного видеоплеера в секции Video +2
+			слайдера в секции Video +2
+			YouTube-видео в плейлисте в секции Video, маленькие видео выровнены по краям большого +2
+			галереи изображений и изображений в ней +2
+			карты +2
+	 На ширине экрана 1024рх и меньше реализовано адаптивное меню +12
+			при нажатии на бургер-иконку меню появляется, плавно выдвигаясь слева, бургер-иконка изменяется на крестик. При нажатии на крестик меню исчезает, плавно возвращаясь назад, иконка крестика превращается в бургер-иконку +2
+			ссылки в меню работают, обеспечивая плавную прокрутку по якорям +2
+			при клике по ссылке в адаптивном меню, или при клике по любому месту сайта, кроме самого адаптивного меню, меню закрывается +2
+			вёрстка меню соответствует макету на всех проверяемых разрешениях +6
+			
+	 Оптимизация скорости загрузки страницы +8 https://developers.google.com/speed/pagespeed/insights/. Результат проверки скорости сайта для мобильных устройств:
+			90 to 100 (green): Good - выполнено полностью +8`
 )
-console.log('	%cИтого 158 баллов из 160', 'color: green')
+console.log('	%cИтого 160 баллов из 160', 'color: green')
 
-console.log('%cПрошу связаться со мной в дискорд https://discordapp.com/users/414360051101466624, если найдете ошибки помимо указанных мной', 'color: blue')
+console.log('%cПрошу связаться со мной в дискорд https://discordapp.com/users/414360051101466624, если найдете ошибки', 'color: blue')
 console.log('%cСпасибо за проверку и удачи в учёбе!', 'color: green')
 
 console.groupEnd()
