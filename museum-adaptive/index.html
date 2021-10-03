@@ -6,8 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="shortcut icon"
-		href="https://rolling-scopes-school.github.io/shamayana-JSFE2021Q3/museum/assets/icons/favicon.ico">
+	<link rel="shortcut icon" href="favicon.ico">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;200;300;400;500;700&display=swap"
@@ -384,26 +383,26 @@
 									<div class="tickets-column__wrap">
 										<div class="tickets-column__amount">
 											<h4 class="tickets-subtitle subtitle_right">Amount</h4>
-											<p class="tickets-age age-basic">Basic 18+</p>
-											<div class="tickets-number__container">
-												<button class="number-minus" type="button"
+											<p class="tickets-age age-basic --tickets">Basic 18+</p>
+											<div class="tickets-number__container --tickets">
+												<button class="number-minus --tickets" type="button"
 													onclick="this.nextElementSibling.stepDown()">
 													<img src="assets/img/icons/tickets/–.svg" alt="- image">
 												</button>
-												<input type="number" min="0" max="20" value="1" readonly class="number">
-												<button class="number-plus" type="button"
+												<input type="number" min="0" max="20" value="1" readonly class="number --tickets">
+												<button class="number-plus --tickets" type="button"
 													onclick="this.previousElementSibling.stepUp()">
 													<img src="assets/img/icons/tickets/+.svg" alt="+ image">
 												</button>
 											</div>
-											<p class="tickets-age age-senior">Senior 65+</p>
-											<div class="tickets-number__container">
-												<button class="number-minus" type="button"
+											<p class="tickets-age age-senior --tickets">Senior 65+</p>
+											<div class="tickets-number__container --tickets">
+												<button class="number-minus --tickets" type="button"
 													onclick="this.nextElementSibling.stepDown()">
 													<img src="assets/img/icons/tickets/–.svg" alt="- image">
 												</button>
-												<input type="number" min="0" max="20" value="1" readonly class="number">
-												<button class="number-plus" type="button"
+												<input type="number" min="0" max="20" value="1" readonly class="number --tickets">
+												<button class="number-plus --tickets" type="button"
 													onclick="this.previousElementSibling.stepUp()">
 													<img src="assets/img/icons/tickets/+.svg" alt="+ image">
 												</button>
@@ -417,123 +416,134 @@
 								</div>
 							</div>
 						</div>
-						<div class="overlay"></div>
-						<div class="boocking-tickets__container">
-							<div class="boocking-tickets__close-wrap">
-								<div class="boocking-tickets__close"></div>
-							</div>
-							<div class="form-container">
-								<form class="boocking-tickets-form">
-									<div class="boocking-tickets__left-column">
-										<div class="boocking-tickets-top">
-											<div class="boocking-tickets-logo"></div>
-											<h4 class="boocking-tickets-tittle">Booking tickets</h4>
-											<p class="boocking-tickets-subtitle">Tour to Louvre</p>
-										</div>
-										<div class="form-main">
-											<div class="form__inputs-wrap">
-												<div class="form-arrow form-date_visible">Date
-													<input class="form-date form-input" type="date" name="formDate" id="formDate">
+
+						<div class="boocking-tickets__popap">
+							<div class="boocking-tickets__container-wrap">
+								<div class="overlay"></div>
+								<div class="boocking-tickets__container">
+									<div class="boocking-tickets__close-wrap">
+										<div class="boocking-tickets__close"></div>
+									</div>
+									<div class="form-container">
+										<form class="boocking-tickets-form">
+											<div class="boocking-tickets__left-column">
+												<div class="boocking-tickets-top">
+													<div class="boocking-tickets-logo"></div>
+													<h4 class="boocking-tickets-tittle">Booking tickets</h4>
+													<p class="boocking-tickets-subtitle">Tour to Louvre</p>
 												</div>
-												<div class="form-arrow">
-													<input class="form-time form-input" type="time" name="formTime" id="formTime">
-												</div>
-											</div>
-											<input class="form-name form-input" type="text" name="formName" id="formName"
-												placeholder="Name">
-											<input class="form-email form-input" type="email" name="formEmail" id="formEmail"
-												placeholder="E-mail">
-											<input class="form-tel form-input" type="tel" name="formTel" id="formTel"
-												placeholder="Phone">
-											<div class="form-arrow form-select-wrap">
-												<select name="formSelect" class="form-select form-input" size="1">
-													<option value="-1" selected="selected" style="display:none;">Ticket Type</option>
-													<option value="1">Permanent exhibition</option>
-													<option value="2">Temporary exhibition</option>
-													<option value="3">Combined Admission</option>
-												</select>
-											</div>
-											<div class="form-footer">
-												<h5 class="form-footer-subtittle">
-													Entry ticket
-												</h5>
-												<div class="form-container__age">
-													<p class="tickets-age age-basic">Basic 18+ (20 €)</p>
-													<div class="tickets-number__container form-number__container">
-														<button class="number-minus form-minus" type="button"
-															onclick="this.nextElementSibling.stepDown()">
-															<img src="assets/img/icons/tickets/booking/-.svg" alt="- image">
-														</button>
-														<input type="number" min="0" max="20" value="2" readonly
-															class="number form-number">
-														<button class="number-plus form-plus" type="button"
-															onclick="this.previousElementSibling.stepUp()">
-															<img src="assets/img/icons/tickets/booking/+.svg" alt="+ image">
-														</button>
+												<div class="form-main">
+													<div class="form__inputs-wrap">
+														<div class="form-arrow form-date_visible">Date
+															<input class="form-date form-input" type="date" name="formDate"
+																id="formDate">
+														</div>
+														<div class="form-arrow">
+															<input class="form-time form-input" type="time" name="formTime"
+																id="formTime">
+														</div>
+													</div>
+													<input class="form-name form-input" type="text" name="formName" id="formName"
+														placeholder="Name">
+													<input class="form-email form-input" type="email" name="formEmail" id="formEmail"
+														placeholder="E-mail">
+													<input class="form-tel form-input" type="tel" name="formTel" id="formTel"
+														placeholder="Phone">
+													<div class="form-arrow form-select-wrap">
+														<select name="formSelect" class="form-select form-input" size="1">
+															<option value="-1" selected="selected" style="display:none;">Ticket Type
+															</option>
+															<option value="1">Permanent exhibition</option>
+															<option value="2">Temporary exhibition</option>
+															<option value="3">Combined Admission</option>
+														</select>
+													</div>
+													<div class="form-footer">
+														<h5 class="form-footer-subtittle">
+															Entry ticket
+														</h5>
+														<div class="form-container__age">
+															<p class="tickets-age age-basic">Basic 18+ (20 €)</p>
+															<div class="tickets-number__container form-number__container">
+																<button class="number-minus form-minus" type="button"
+																	onclick="this.nextElementSibling.stepDown()">
+																	<img src="assets/img/icons/tickets/booking/-.svg" alt="- image">
+																</button>
+																<input type="number" min="0" max="20" value="2" readonly
+																	class="number form-number">
+																<button class="number-plus form-plus" type="button"
+																	onclick="this.previousElementSibling.stepUp()">
+																	<img src="assets/img/icons/tickets/booking/+.svg" alt="+ image">
+																</button>
+															</div>
+														</div>
+														<div class="form-container__age">
+															<p class="tickets-age age-senior">Senior 65+ (10 €)</p>
+															<div class="tickets-number__container form-number__container">
+																<button class="number-minus form-minus" type="button"
+																	onclick="this.nextElementSibling.stepDown()">
+																	<img src="assets/img/icons/tickets/booking/-.svg" alt="- image">
+																</button>
+																<input type="number" min="0" max="20" value="2" readonly
+																	class="number form-number">
+																<button class="number-plus form-plus" type="button"
+																	onclick="this.previousElementSibling.stepUp()">
+																	<img src="assets/img/icons/tickets/booking/+.svg" alt="+ image">
+																</button>
+															</div>
+														</div>
 													</div>
 												</div>
-												<div class="form-container__age">
-													<p class="tickets-age age-senior">Senior 65+ (10 €)</p>
-													<div class="tickets-number__container form-number__container">
-														<button class="number-minus form-minus" type="button"
-															onclick="this.nextElementSibling.stepDown()">
-															<img src="assets/img/icons/tickets/booking/-.svg" alt="- image">
-														</button>
-														<input type="number" min="0" max="20" value="2" readonly
-															class="number form-number">
-														<button class="number-plus form-plus" type="button"
-															onclick="this.previousElementSibling.stepUp()">
-															<img src="assets/img/icons/tickets/booking/+.svg" alt="+ image">
-														</button>
+											</div>
+											<div class="boocking-tickets__right-column">
+												<div class="form-overview">
+													<div class="form-overview-description">
+														<h4 class="form-overview-tittle">Overview</h4>
+														<p class="form-overview-subtittle">Tour to Louvre</p>
+														<div class="form-overview-date">Friday, August 19</div>
+														<div class="form-overview-time">16 : 30</div>
+														<div class="form-overview-ticket">Temporary exhibition</div>
+													</div>
+													<div class="form-overview-picture">
+														<img class="form-overview-picture-1"
+															src="assets/img/tickets/boocking_tickets_img.jpg" alt="louvre_img">
+														<img class="form-overview-picture-2"
+															src="assets/img/tickets/md3/boocking_tickets_img.jpg" alt="louvre_img">
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-									<div class="boocking-tickets__right-column">
-										<div class="form-overview">
-											<div class="form-overview-description">
-												<h4 class="form-overview-tittle">Overview</h4>
-												<p class="form-overview-subtittle">Tour to Louvre</p>
-												<div class="form-overview-date">Friday, August 19</div>
-												<div class="form-overview-time">16 : 30</div>
-												<div class="form-overview-ticket">Temporary exhibition</div>
-											</div>
-											<div class="form-overview-picture">
-												<img src="assets/img/tickets/boocking_tickets_img.jpg" alt="louvre_img">
-											</div>
-										</div>
-										<div class="form-overview-calc">
-											<div class="form-overview-calc__overview">
-												<div class="form-overview-basic__wrap">
-													<div class="form-overview-basic-count">2</div>
-													<p class="form-overview-basic-amount">Basic (20 €)</p>
+												<div class="form-overview-calc">
+													<div class="form-overview-calc__overview">
+														<div class="form-overview-basic__wrap">
+															<div class="form-overview-basic-count">2</div>
+															<p class="form-overview-basic-amount">Basic (20 €)</p>
+														</div>
+														<p class="form-overview-basic-calc">40 €</p>
+													</div>
+													<div class="form-overview-calc__overview">
+														<div class="form-overview-senior__wrap">
+															<div class="form-overview-senior-count">2</div>
+															<p class="form-overview-senior-amount">Senior (10 €)</p>
+														</div>
+														<p class="form-overview-senior-calc">20 €</p>
+													</div>
 												</div>
-												<p class="form-overview-basic-calc">40 €</p>
-											</div>
-											<div class="form-overview-calc__overview">
-												<div class="form-overview-senior__wrap">
-													<div class="form-overview-senior-count">2</div>
-													<p class="form-overview-senior-amount">Senior (10 €)</p>
+												<div class="form-overview-pay">
+													<h4 class="form-overview-total">Total:</h4>
+													<p class="form-overview-total-calc">60 €</p>
 												</div>
-												<p class="form-overview-senior-calc">20 €</p>
+												<div class="form-overview-pay-card">
+													<div class="form-overview-pay-card__front">
+													</div>
+													<div class="form-overview-pay-card__back">
+													</div>
+												</div>
+												<div class="form-payment-btn__wrap">
+													<button type="button" class="form-payment-btn">Book</button>
+												</div>
 											</div>
-										</div>
-										<div class="form-overview-pay">
-											<h4 class="form-overview-total">Total:</h4>
-											<p class="form-overview-total-calc">60 €</p>
-										</div>
-										<div class="form-overview-pay-card">
-											<div class="form-overview-pay-card__front">
-											</div>
-											<div class="form-overview-pay-card__back">
-											</div>
-										</div>
-										<div class="form-payment-btn__wrap">
-											<button type="button" class="form-payment-btn">Book</button>
-										</div>
+										</form>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>

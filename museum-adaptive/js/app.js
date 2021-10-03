@@ -83,24 +83,32 @@ const ticketsBtn = document.querySelector('.tickets-btn')
 const boockingTicketsContainer = document.querySelector('.boocking-tickets__container')
 const boockingTicketsClose = document.querySelector('.boocking-tickets__close')
 const overlay = document.querySelector('.overlay')
+const popap = document.querySelector('.boocking-tickets__popap')
+const lockBody = document.querySelector('body')
 
-
-ticketsBtn.onclick = function () {
-	if (boockingTicketsContainer.classList[1] === 'active') {
+ticketsBtn.onclick = function () { showBookingTickets() }
+function showBookingTickets() {
+	if (boockingTicketsContainer.classList[1] === 'active' && overlay.classList[1] === 'active') {
 		boockingTicketsContainer.classList.remove('active')
 		overlay.classList.remove('active')
+		popap.classList.remove('open')
+		lockBody.classList.remove('_lock')
+
 	} else {
 		boockingTicketsContainer.classList.add('active')
 		overlay.classList.add('active')
+		popap.classList.add('open')
+		lockBody.classList.add('_lock')
+
 	}
 }
 boockingTicketsClose.onclick = function () {
-	boockingTicketsContainer.classList.remove('active')
-	overlay.classList.remove('active')
+	showBookingTickets()
+
 }
 overlay.onclick = function () {
-	boockingTicketsContainer.classList.remove('active')
-	overlay.classList.remove('active')
+	showBookingTickets()
+
 }
 // Burger-menu
 const burgerMenuWrap = document.querySelector('.header__burger')
@@ -117,7 +125,6 @@ function getMenu(t) {
 	const sectionSubTittle = document.querySelector('.section-subtittle')
 	const welcomeLink = document.querySelector('.welcome-link')
 
-	const lockBody = document.querySelector('body')
 
 
 
