@@ -1924,7 +1924,7 @@ input::-webkit-inner-spin-button {
 }
 
 .boocking-tickets-form {
-  overflow: auto;
+  overflow: hidden;
   width: 970px;
   height: 663px;
   display: -webkit-box;
@@ -2231,6 +2231,14 @@ input::-webkit-inner-spin-button {
   height: 25px;
 }
 
+.form-picture {
+  margin: -2px 0px 0px 0px;
+}
+
+.form-picture-2 {
+  display: none;
+}
+
 .form-overview {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2299,14 +2307,6 @@ input::-webkit-inner-spin-button {
 
 .form-overview-ticket::after {
   background: url("../assets/img/icons/tickets/booking/selected.svg") no-repeat;
-}
-
-.form-overview-picture {
-  margin: -2px 0px 0px 0px;
-}
-
-.form-overview-picture-2 {
-  display: none;
 }
 
 .form-overview-calc__overview {
@@ -3915,11 +3915,11 @@ input::-webkit-inner-spin-button {
     width: 100%;
   }
 
-  .form-overview-picture-1 {
+  .form-picture-1 {
     display: none;
   }
 
-  .form-overview-picture-2 {
+  .form-picture-2 {
     display: block;
   }
 
@@ -4418,6 +4418,12 @@ input::-webkit-inner-spin-button {
   }
 }
 
+@media (max-width: 390.98px) {
+  .video-slider__videos {
+    height: 94px;
+  }
+}
+
 @media (max-width: 360.98px) {
   ._container {
     max-width: none;
@@ -4441,6 +4447,7 @@ input::-webkit-inner-spin-button {
   }
 
   .video-slider__videos {
+    height: 86px;
     margin: 0px 0px 20px 0px;
   }
 
