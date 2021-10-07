@@ -1,5 +1,23 @@
 
 
+function testWebP(callback) {
+	let webP = new Image();
+	webP.onload = webP.onerror = function () {
+		let sup
+		callback(webP.height == 2);
+		webP.height == 2 ? sup = true : sup = false
+		galleryTransform(sup)
+	};
+	webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+}
+testWebP(function (support) {
+	if (support === true) {
+
+	} else {
+		document.querySelector('html').classList.remove('_webp');
+		document.querySelector('html').classList.add('_no-webp');
+	}
+});
 //Section Video
 let videoProgress = document.querySelector('.video-progress');
 let volumeProgress = document.querySelector('.volume-progress');
@@ -28,25 +46,50 @@ if (localStorage.getItem('volume-progress')) {
 }
 
 // Section Gallery
-let galleryTransform = function () {
+let galleryTransform = function (sup) {
 	const pictureInnerContainer = document.querySelector('.gallery_inner-items');
-	const arrPictures = [
-		"./assets/img/gallery/galery1.jpg",
-		"./assets/img/gallery/galery2.jpg",
-		"./assets/img/gallery/galery3.jpg",
-		"./assets/img/gallery/galery4.jpg",
-		"./assets/img/gallery/galery5.jpg",
-		"./assets/img/gallery/galery6.jpg",
-		"./assets/img/gallery/galery7.jpg",
-		"./assets/img/gallery/galery8.jpg",
-		"./assets/img/gallery/galery9.jpg",
-		"./assets/img/gallery/galery10.jpg",
-		"./assets/img/gallery/galery11.jpg",
-		"./assets/img/gallery/galery12.jpg",
-		"./assets/img/gallery/galery13.jpg",
-		"./assets/img/gallery/galery14.jpg",
-		"./assets/img/gallery/galery15.jpg"
-	]
+	let arrPictures
+	if (sup === true) {
+		console.log(2)
+
+		arrPictures = [
+			"./assets/img/gallery/galery1.webp",
+			"./assets/img/gallery/galery2.webp",
+			"./assets/img/gallery/galery3.webp",
+			"./assets/img/gallery/galery4.webp",
+			"./assets/img/gallery/galery5.webp",
+			"./assets/img/gallery/galery6.webp",
+			"./assets/img/gallery/galery7.webp",
+			"./assets/img/gallery/galery8.webp",
+			"./assets/img/gallery/galery9.webp",
+			"./assets/img/gallery/galery10.webp",
+			"./assets/img/gallery/galery11.webp",
+			"./assets/img/gallery/galery12.webp",
+			"./assets/img/gallery/galery13.webp",
+			"./assets/img/gallery/galery14.webp",
+			"./assets/img/gallery/galery15.webp"
+		]
+	} else {
+		console.log(1)
+		arrPictures = [
+			"./assets/img/gallery/galery1.jpg",
+			"./assets/img/gallery/galery2.jpg",
+			"./assets/img/gallery/galery3.jpg",
+			"./assets/img/gallery/galery4.jpg",
+			"./assets/img/gallery/galery5.jpg",
+			"./assets/img/gallery/galery6.jpg",
+			"./assets/img/gallery/galery7.jpg",
+			"./assets/img/gallery/galery8.jpg",
+			"./assets/img/gallery/galery9.jpg",
+			"./assets/img/gallery/galery10.jpg",
+			"./assets/img/gallery/galery11.jpg",
+			"./assets/img/gallery/galery12.jpg",
+			"./assets/img/gallery/galery13.jpg",
+			"./assets/img/gallery/galery14.jpg",
+			"./assets/img/gallery/galery15.jpg"
+		]
+	}
+
 	shuffle(arrPictures)
 	function shuffle(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -73,7 +116,7 @@ let galleryTransform = function () {
 			}
 	}));
 }
-galleryTransform()
+
 
 // Button
 
@@ -132,17 +175,31 @@ function showBurgerMenu(t) {
 	sectionSubTittle.classList.add('active')
 	welcomeLink.classList.add('active')
 	welcomeOverlay.classList.add('active')
-	lockBody.classList.add('_lock')
+	// lockBody.classList.add('_lock')
+
+}
+function removeMenu() {
+	burgerMenu.classList.remove('active')
+	headerNav.classList.remove('active')
+	sectionTitle.classList.remove('active')
+	sectionSubTittle.classList.remove('active')
+	welcomeLink.classList.remove('active')
+	burgerMenuActive.classList.remove('active')
+	welcomeOverlay.classList.remove('active')
+	// lockBody.classList.remove('_lock')
 }
 function closeBurgerMenu(t) {
 	setTimeout(() => {
-		burgerMenu.classList.remove('active')
-		headerNav.classList.remove('active')
-		sectionTitle.classList.remove('active')
-		sectionSubTittle.classList.remove('active')
-		welcomeLink.classList.remove('active')
+		removeMenu()
+		setTimeout(() => {
+			removeMenu()
+			setTimeout(() => {
+				removeMenu()
 
+			}, t - 500);
+		}, t - 500);
 	}, t);
+
 	burgerMenuActive.classList.remove('active')
 	welcomeOverlay.classList.remove('active')
 	lockBody.classList.remove('_lock')
@@ -160,11 +217,12 @@ burgerMenuWrap.onclick = function () {
 	getMenu(1000)
 }
 // Reload-video
-let iframeVideo = document.querySelectorAll('.video-iframe')
 
-for (let iframe of iframeVideo) {
-	iframe.setAttribute('loading', 'lazy')
-}
+// let iframeVideo = document.querySelectorAll('.video-iframe')
+
+// for (let iframe of iframeVideo) {
+// 	iframe.setAttribute('loading', 'lazy')
+// }
 
 // let buttonPay = document.querySelector('.form-payment-btn')
 

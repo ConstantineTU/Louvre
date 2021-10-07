@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html class="_webp" lang="ru">
 
 <head>
 	<title>Museum</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" href="favicon.ico">
-
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;200;300;400;500;700&display=swap"
+	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap"
 		rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -249,8 +247,14 @@
 						</div>
 						<div class="video-player__wrap">
 							<div class="video-img">
-								<img src="assets/img/video/Rectangle.jpg" alt="Video image">
-								<img class="-img-md1" src="assets/img/video/md1/Rectangle.jpg" alt="Video image">
+								<picture>
+									<source srcset="assets/img/video/Rectangle.webp" type="image/webp">
+									<img src="assets/img/video/Rectangle.jpg" alt="Video image">
+								</picture>
+								<picture>
+									<source class="-img-md1" srcset="assets/img/video/md1/Rectangle.webp" type="image/webp">
+									<img class="-img-md1" src="assets/img/video/md1/Rectangle.jpg" alt="Video image">
+								</picture>
 								<div class="video-img__frame">
 									<button class="video__button-frame -btn-1" type="button"></button>
 								</div>
@@ -284,10 +288,10 @@
 									span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
 									body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
 									<a href=https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI?autoplay=1>
-										<img src=assets/img/video/slides/slide_item1.jpg alt='video-slede-1'>
-											<div style='background: url(assets/img/video/slides/youtube_icon_bg.png) center no-repeat;'>
+										<img src=assets/img/video/slides/slide_item1.webp alt='video-slede-1'>
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
 										
-										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.png) center no-repeat;'></span>
+										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
 									</a>
 
 							" src="https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI" title="YouTube video player"
@@ -298,10 +302,10 @@
 										span{position:absolute;width:100%;top:0;bottom:0;margin:auto;d}
 										body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
 										<a href=https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo?autoplay=1>
-											<img src=assets/img/video/slides/slide_item2.jpg alt='video-slede-2'>
-											<div style='background: url(assets/img/video/slides/youtube_icon_bg.png) center no-repeat;'>
+											<img src=assets/img/video/slides/slide_item2.webp alt='video-slede-2'>
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
 										
-										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.png) center no-repeat;'></span>
+										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
 									</a>
 										" src="https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo" title="YouTube video player"
 									allowfullscreen></iframe>
@@ -311,11 +315,11 @@
 											span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
 											body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
 											<a href=https://www.youtube-nocookie.com/embed/NOhDysLnTvY?autoplay=1>
-												<img src=assets/img/video/slides/slide_item3.jpg alt='video-slede-3'>
+												<img src=assets/img/video/slides/slide_item3.webp alt='video-slede-3'>
 											
-										<div style='background: url(assets/img/video/slides/youtube_icon_bg.png) center no-repeat;'>
+										<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
 										
-										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.png) center no-repeat;'></span>
+										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
 									</a>
 											" src="https://www.youtube-nocookie.com/embed/NOhDysLnTvY" title="YouTube video player"
 									allowfullscreen></iframe>
@@ -432,7 +436,7 @@
 															<input class="form-date form-input" type="date" name="formDate"
 																id="formDate">
 														</div>
-														<div class="form-arrow">
+														<div class="form-arrow form-time_visible">Time
 															<input class="form-time form-input" type="time" name="formTime"
 																id="formTime">
 														</div>
@@ -499,8 +503,14 @@
 														<div class="form-overview-ticket">Temporary exhibition</div>
 													</div>
 													<div class="form-overview-picture">
-														<img class="form-picture-1" src="assets/img/tickets/book.jpg" alt="1">
-														<img class="form-picture-2" src="assets/img/tickets/md3/book.jpg" alt="1">
+														<picture>
+															<source srcset="assets/img/tickets/book.webp" type="image/webp">
+															<img class="form-picture-1" src="assets/img/tickets/book.jpg" alt="1">
+														</picture>
+														<picture>
+															<source srcset="assets/img/tickets/md3/book.webp" type="image/webp">
+															<img class="form-picture-2" src="assets/img/tickets/md3/book.jpg" alt="1">
+														</picture>
 													</div>
 												</div>
 												<div class="form-overview-calc">
@@ -524,9 +534,76 @@
 													<p class="form-overview-total-calc">60 €</p>
 												</div>
 												<div class="form-overview-pay-card">
-													<div class="form-overview-pay-card__front">
+													<div class="front">
+														<div class="front-main">
+															<div class="front-main-inputs">
+																<div class="front-main-inputs__input-1">
+																	<label for="card-number">Card number
+																	</label>
+																	<input id="card-number" type="text">
+																</div>
+																<label for="expiration-month">Expiration date
+																</label>
+																<div class="front-main-inputs__input-2">
+																	<select name="Expiration-month" id="expiration-month" size="1">
+																		<option value="1">01</option>
+																		<option value="2">02</option>
+																		<option value="3" selected>03</option>
+																		<option value="4">04</option>
+																		<option value="5">05</option>
+																		<option value="6">06</option>
+																		<option value="7">07</option>
+																		<option value="8">08</option>
+																		<option value="9">09</option>
+																		<option value="10">10</option>
+																		<option value="11">11</option>
+																		<option value="12">12</option>
+																	</select>
+																</div>
+																<div class="front-main-inputs__input-3">
+
+																	<select name="Expiration-year" id="expiration-year">
+																		<option value="2021">2021</option>
+																		<option value="2022">2022</option>
+																		<option value="2023">2023</option>
+																		<option value="2024" selected>2024</option>
+																		<option value="2025">2025</option>
+																		<option value="2026">2026</option>
+																		<option value="2027">2027</option>
+																		<option value="2028">2028</option>
+																		<option value="2029">2029</option>
+																	</select>
+																</div>
+															</div>
+															<div class="front-main-img">
+																<div class="front-main-img-1">
+																	<img src="assets/img/tickets/visa.svg" alt="Visa">
+																</div>
+																<div class="front-main-img-2">
+																	<img src="assets/img/tickets/mastercard.svg" alt="Mastercard">
+																</div>
+															</div>
+
+														</div>
+														<div class="front-main-footer">
+															<label for="cardholder-name">Cardholder name</label>
+															<input id="cardholder-name" type="text">
+
+
+														</div>
 													</div>
-													<div class="form-overview-pay-card__back">
+													<div class="back">
+														<div class="back-black"></div>
+														<div class="back-content-wrap">
+															<div class="back-content">
+																<label for="CVC">CVC/CVV</label>
+																<input id="CVC" type="text">
+																<p class="back-content-text">The last <br>
+																	3 or 4 digits
+																	on back <br>
+																	of the card</p>
+															</div>
+														</div>
 													</div>
 												</div>
 												<div class="form-payment-btn__wrap">
