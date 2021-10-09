@@ -10,6 +10,8 @@
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap"
 		rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -281,7 +283,8 @@
 						</div>
 						<div class="video-slider">
 							<div class="video-slider__videos">
-								<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+								<div class="iframe-wrap">
+									<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
 									html,body{height:100%}
 									img{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
 									div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
@@ -295,8 +298,10 @@
 									</a>
 
 							" src="https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI" title="YouTube video player"
-									allowfullscreen></iframe>
-								<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap">
+									<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
 										html,body{height:100%}
 										img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
 										span{position:absolute;width:100%;top:0;bottom:0;margin:auto;d}
@@ -308,21 +313,24 @@
 										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
 									</a>
 										" src="https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo" title="YouTube video player"
-									allowfullscreen></iframe>
-								<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
-											html,body{height:100%}
-											img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
-											span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
-											body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
-											<a href=https://www.youtube-nocookie.com/embed/NOhDysLnTvY?autoplay=1>
-												<img src=assets/img/video/slides/slide_item3.webp alt='video-slede-3'>
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap">
+									<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+												html,body{height:100%}
+												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+												<a href=https://www.youtube-nocookie.com/embed/NOhDysLnTvY?autoplay=1>
+													<img src=assets/img/video/slides/slide_item3.webp alt='video-slede-3'>
+												
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
 											
-										<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
-										
-										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
-									</a>
-											" src="https://www.youtube-nocookie.com/embed/NOhDysLnTvY" title="YouTube video player"
-									allowfullscreen></iframe>
+											</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+										</a>
+												" src="https://www.youtube-nocookie.com/embed/NOhDysLnTvY" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
 							</div>
 							<div class="video-slider__items-wrap">
 								<button type="button" class="video-slider__arrow-left video__button-playlist"></button>
@@ -580,7 +588,11 @@
 																	<img src="assets/img/tickets/visa.svg" alt="Visa">
 																</div>
 																<div class="front-main-img-2">
-																	<img src="assets/img/tickets/mastercard.svg" alt="Mastercard">
+																	<picture>
+																		<source srcset="assets/img/tickets/mstercard.webp"
+																			type="image/webp">
+																		<img src="assets/img/tickets/mstercard.png" alt="Mastercard">
+																	</picture>
 																</div>
 															</div>
 
