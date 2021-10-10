@@ -1,5 +1,5 @@
 
-
+// test support webp
 function testWebP(callback) {
 	let webP = new Image();
 	webP.onload = webP.onerror = function () {
@@ -18,6 +18,181 @@ testWebP(function (support) {
 		document.querySelector('html').classList.add('_no-webp');
 	}
 });
+// Section Welcome
+
+
+
+
+
+
+let itemsWelcome = document.querySelectorAll('.welcome-carousel-item')
+let sliderItemWelcome = document.querySelectorAll('.welcome-slider__item')
+let currentItemWlcome = 0
+let isEnabled = true
+
+let countSlideWelcome = document.querySelector('.welcome-slider__counter-left')
+
+
+sliderItemWelcome.forEach(slide => (slide.addEventListener('click', function () {
+	if (isEnabled) {
+		if (slide.value > currentItemWlcome) {
+			hideItem('to-left')
+			changeCurrentItem(slide.value)
+			showItem('from-right')
+		} else if (slide.value < currentItemWlcome) {
+			hideItem('to-right')
+			changeCurrentItem(slide.value)
+			showItem('from-left')
+		}
+	}
+
+})))
+
+function changeCurrentItem(n) {
+	for (let bullet of sliderItemWelcome) {
+		bullet.classList.remove('active')
+	}
+	currentItemWlcome = (n + itemsWelcome.length) % itemsWelcome.length
+	countSlideWelcome.textContent = `0${(currentItemWlcome + 1)}`
+	sliderItemWelcome[currentItemWlcome].classList.add('active')
+
+}
+
+function hideItem(direction) {
+	isEnabled = false
+	itemsWelcome[currentItemWlcome].classList.add(direction)
+	itemsWelcome[currentItemWlcome].addEventListener('animationend', function () {
+		this.classList.remove('active', direction)
+	})
+}
+
+function showItem(direction) {
+	itemsWelcome[currentItemWlcome].classList.add('next', direction)
+	itemsWelcome[currentItemWlcome].addEventListener('animationend', function () {
+		this.classList.remove('next', direction)
+		this.classList.add('active')
+		isEnabled = true
+
+	})
+}
+
+function previousItem(n) {
+	hideItem('to-right')
+	changeCurrentItem(n - 1)
+	showItem('from-left')
+}
+function nextItem(n) {
+	hideItem('to-left')
+	changeCurrentItem(n + 1)
+	showItem('from-right')
+}
+
+document.querySelector('.welcome-slider__arrows-left').addEventListener('click', function () {
+	if (isEnabled) {
+		previousItem(currentItemWlcome)
+	}
+})
+
+document.querySelector('.welcome-slider__arrows-right').addEventListener('click', function () {
+	if (isEnabled) {
+		nextItem(currentItemWlcome)
+	}
+})
+
+const swipedetect = (el) => {
+
+
+	let surface = el
+	let startX = 0
+	let startY = 0
+	let distX = 0
+	let distY = 0
+
+	let startTime = 0
+	let elapsedTime = 0
+
+	let threshold = 100
+	let restraint = 100
+	let allowedTime = 400
+
+	surface.addEventListener('mousedown', function (e) {
+		startX = e.pageX
+		startY = e.pageY
+		startTime = new Date().getTime()
+		e.preventDefault()
+	})
+
+	surface.addEventListener('mouseup', function (e) {
+		distX = e.pageX - startX
+		distY = e.pageX - startY
+		elapsedTime = new Date().getTime() - startTime
+		if (elapsedTime <= allowedTime) {
+			if (Math.abs(distX) > threshold && Math.abs(distY) > restraint) {
+				if (distX > 0) {
+					if (isEnabled) {
+						previousItem(currentItemWlcome)
+					}
+				} else {
+					if (isEnabled) {
+						nextItem(currentItemWlcome)
+					}
+				}
+			}
+		}
+		e.preventDefault()
+	})
+	surface.addEventListener('touchstart', function (e) {
+		if (e.target.classList.contains('welcome-slider__arrows')) {
+			if (e.target.classList.contains('welcome-slider__arrows-right')) {
+				if (isEnabled) {
+					previousItem(currentItemWlcome)
+				}
+			} else if (e.target.classList.contains('welcome-slider__arrows-right')) {
+				if (isEnabled) {
+					nextItem(currentItemWlcome)
+				}
+			}
+		}
+		let touchObj = e.changedTouches[0]
+		startX = touchObj.pageX
+		startY = touchObj.pageY
+		startTime = new Date().getTime()
+		e.preventDefault()
+	})
+	surface.addEventListener('touchmove', function (e) {
+		e.preventDefault()
+	})
+
+	surface.addEventListener('touchend', function (e) {
+		let touchObj = e.changedTouches[0]
+		distX = touchObj.pageX - startX
+		distY = touchObj.pageX - startY
+		elapsedTime = new Date().getTime() - startTime
+		if (elapsedTime <= allowedTime) {
+			if (Math.abs(distX) > threshold && Math.abs(distY) > restraint) {
+				if (distX > 0) {
+					if (isEnabled) {
+						previousItem(currentItemWlcome)
+					}
+				} else {
+					if (isEnabled) {
+						nextItem(currentItemWlcome)
+					}
+				}
+			}
+		}
+		e.preventDefault()
+	})
+}
+let el = document.querySelector('.welcome-carousel')
+swipedetect(el)
+
+
+
+
+
+
+
 //Section Video
 let videoProgress = document.querySelector('.video-progress');
 let volumeProgress = document.querySelector('.volume-progress');
@@ -50,8 +225,6 @@ let galleryTransform = function (sup) {
 	const pictureInnerContainer = document.querySelector('.gallery_inner-items');
 	let arrPictures
 	if (sup === true) {
-		console.log(2)
-
 		arrPictures = [
 			"./assets/img/gallery/galery1.webp",
 			"./assets/img/gallery/galery2.webp",
@@ -70,7 +243,6 @@ let galleryTransform = function (sup) {
 			"./assets/img/gallery/galery15.webp"
 		]
 	} else {
-		console.log(1)
 		arrPictures = [
 			"./assets/img/gallery/galery1.jpg",
 			"./assets/img/gallery/galery2.jpg",
@@ -118,7 +290,7 @@ let galleryTransform = function (sup) {
 }
 
 
-// Button
+// Button tickets
 
 const ticketsBtn = document.querySelector('.tickets-btn')
 const boockingTicketsContainer = document.querySelector('.boocking-tickets__container')

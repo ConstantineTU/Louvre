@@ -664,6 +664,80 @@ footer {
   padding: 0px 0px 0px 0px;
 }
 
+.welcome-carousel {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+}
+
+.welcome-carousel_container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.welcome-carousel_container-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#000000), color-stop(16.19%, rgba(0, 0, 0, 0.5)), color-stop(30.73%, rgba(0, 0, 0, 0)));
+  background: -o-linear-gradient(left, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
+  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%);
+}
+
+.welcome-carousel-item {
+  display: none;
+  position: relative;
+  z-index: -2;
+  margin: 0 auto;
+  -webkit-animation: 0.5s ease-in-out;
+          animation: 0.5s ease-in-out;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.welcome-carousel-item.active,
+.welcome-carousel-item.next {
+  display: block;
+}
+
+.welcome-carousel-item.next {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.welcome-carousel-item.to-left {
+  -webkit-animation-name: left;
+          animation-name: left;
+}
+
+.welcome-carousel-item.to-right {
+  -webkit-animation-name: right;
+          animation-name: right;
+  animation-direction: reverse;
+}
+
+.welcome-carousel-item.from-left {
+  -webkit-animation-name: left;
+          animation-name: left;
+  animation-direction: reverse;
+}
+
+.welcome-carousel-item.from-right {
+  -webkit-animation-name: right;
+          animation-name: right;
+}
+
 .welcome__overlay {
   position: fixed;
   z-index: 10;
@@ -2747,14 +2821,6 @@ input::-webkit-inner-spin-button {
   border: none;
 }
 
-._webp .welcome-container {
-  height: 810px;
-  position: relative;
-  z-index: 1;
-  background: #030303 url("../assets/img/welcome/1.webp") no-repeat;
-  background-position: left calc(100%) top 0;
-}
-
 ._webp .visiting-item {
   cursor: pointer;
 }
@@ -2916,6 +2982,46 @@ input::-webkit-inner-spin-button {
     -webkit-transform: translate(-50%, -50%) scale(3);
     transform: translate(-50%, -50%) scale(3);
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes left {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@-webkit-keyframes right {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0;
   }
 }
 
@@ -3285,6 +3391,12 @@ input::-webkit-inner-spin-button {
 
   ._webp .contacts-map {
     background: url("../assets/img/contacts/md1/Rectangle.webp") center no-repeat;
+  }
+
+  ._no-webp .welcome-container {
+    height: 610px;
+    background: #030303 url("../assets/img/welcome/md1/1.jpg") no-repeat;
+    background-position: left calc(100%) top calc(100% - 60px);
   }
 
   ._no-webp .tickets-img {
@@ -4075,6 +4187,13 @@ input::-webkit-inner-spin-button {
     background-size: contain;
   }
 
+  ._no-webp .welcome-container {
+    height: 872px;
+    background: #030303 url("../assets/img/welcome/md2/1.jpg") no-repeat;
+    background-position: left calc(100%) top calc(100% - 101px);
+    background-size: contain;
+  }
+
   ._no-webp .visiting-item__wrap .-img-1 {
     background: url("../assets/img/cards/md2/Rectangle.jpg") center no-repeat;
   }
@@ -4259,6 +4378,10 @@ input::-webkit-inner-spin-button {
   ._webp .visiting-item__wrap .-img-6 {
     background: url("../assets/img/cards/md1/Rectangle-5.webp") center no-repeat;
     background-size: contain;
+  }
+
+  ._no-webp .welcome-container {
+    height: 800px;
   }
 
   ._no-webp .visiting-item__wrap .-img-1 {
@@ -4502,6 +4625,10 @@ input::-webkit-inner-spin-button {
   }
 
   ._webp .welcome-container {
+    height: 710px;
+  }
+
+  ._no-webp .welcome-container {
     height: 710px;
   }
 }
@@ -4909,7 +5036,7 @@ input::-webkit-inner-spin-button {
   }
 
   ._webp .welcome-container {
-    background: #030303 url("../assets/img/welcome/md3/1.jpg") no-repeat;
+    background: #030303 url("../assets/img/welcome/md3/1.webp") no-repeat;
     background-position: left calc(100%) top calc(100% - 80px);
     background-size: contain;
     height: 547px;
@@ -4952,6 +5079,13 @@ input::-webkit-inner-spin-button {
   ._webp .contacts-map {
     background: url("../assets/img/contacts/md3/Rectangle.webp") center no-repeat;
     background-size: contain;
+  }
+
+  ._no-webp .welcome-container {
+    background: #030303 url("../assets/img/welcome/md3/1.jpg") no-repeat;
+    background-position: left calc(100%) top calc(100% - 80px);
+    background-size: contain;
+    height: 547px;
   }
 
   ._no-webp .visiting-item__wrap .-img-1 {
@@ -5110,6 +5244,11 @@ input::-webkit-inner-spin-button {
   }
 
   ._webp .welcome-container {
+    background-position: left calc(100%) top calc(100% - 130px);
+    background-size: contain;
+  }
+
+  ._no-webp .welcome-container {
     background-position: left calc(100%) top calc(100% - 130px);
     background-size: contain;
   }
