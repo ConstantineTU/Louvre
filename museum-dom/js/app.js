@@ -1,5 +1,6 @@
 
 // test support webp
+
 function testWebP(callback) {
 	let webP = new Image();
 	webP.onload = webP.onerror = function () {
@@ -18,12 +19,8 @@ testWebP(function (support) {
 		document.querySelector('html').classList.add('_no-webp');
 	}
 });
+
 // Section Welcome
-
-
-
-
-
 
 let itemsWelcome = document.querySelectorAll('.welcome-carousel-item')
 let sliderItemWelcome = document.querySelectorAll('.welcome-slider__item')
@@ -45,7 +42,6 @@ sliderItemWelcome.forEach(slide => (slide.addEventListener('click', function () 
 			showItem('from-left')
 		}
 	}
-
 })))
 
 function changeCurrentItem(n) {
@@ -55,7 +51,6 @@ function changeCurrentItem(n) {
 	currentItemWlcome = (n + itemsWelcome.length) % itemsWelcome.length
 	countSlideWelcome.textContent = `0${(currentItemWlcome + 1)}`
 	sliderItemWelcome[currentItemWlcome].classList.add('active')
-
 }
 
 function hideItem(direction) {
@@ -72,7 +67,6 @@ function showItem(direction) {
 		this.classList.remove('next', direction)
 		this.classList.add('active')
 		isEnabled = true
-
 	})
 }
 
@@ -186,14 +180,65 @@ const swipedetect = (el) => {
 }
 let el = document.querySelector('.welcome-carousel')
 swipedetect(el)
+// Section Explore
 
 
 
 
+const exploreSwipedetect = (el) => {
+	let body = document.querySelector('body')
+	let exploreImg2 = document.querySelector('.explore-img2')
+	let exploreScroller = document.querySelector('.explore-slider')
+	let surface = el
+	let startX = 0
+	let distX = 0
+	let startNumberX = 460
+	let endNumberX = 460
+	let startLeft = 421
+	let endLeft = 421
+	surface.addEventListener('mousedown', getMovePucture)
+	function getMovePucture(e) {
+		startX = e.pageX
+		body.addEventListener('mousemove', movePicture)
+	}
+	function movePicture(e) {
+		distX = e.pageX - startX
+		if (exploreImg2.clientWidth >= 19 && exploreImg2.clientWidth <= 736) {
+			exploreImg2.style.width = `${startNumberX + distX}px`
+			exploreScroller.style.left = `${startLeft + distX}px`
+			console.log(exploreImg2.style.width)
+			e.preventDefault()
+			endNumberX = startNumberX + distX
+			endLeft = startLeft + distX
+			console.log(exploreScroller.style.left)
+			if (endNumberX < 19) {
+				endNumberX = 19
+				endLeft = -19
+				exploreImg2.style.width = `${endNumberX}px`
+				exploreScroller.style.left = `${endLeft}px`
+			}
+			if (endNumberX > 736) {
+				endNumberX = 736
+				endLeft = 698
+				exploreImg2.style.width = `${endNumberX}px`
+				exploreScroller.style.left = `${endLeft}px`
+			}
+			console.log(endNumberX)
+		}
+	}
+	function stopMovePicture(e) {
+		console.log(e)
+		body.removeEventListener('mousemove', movePicture)
+		startNumberX = endNumberX
+		startLeft = endLeft
+	}
+	body.addEventListener('mouseup', stopMovePicture)
+}
+let exploreSlider = document.querySelector('#explore-slider')
+exploreSwipedetect(exploreSlider)
 
+// Section Video
 
-
-//Section Video
 let videoProgress = document.querySelector('.video-progress');
 let volumeProgress = document.querySelector('.volume-progress');
 

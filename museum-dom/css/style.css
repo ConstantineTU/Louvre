@@ -671,6 +671,7 @@ footer {
   right: 0;
   z-index: -1;
   height: 100%;
+  cursor: pointer;
 }
 
 .welcome-carousel_container {
@@ -2856,7 +2857,40 @@ input::-webkit-inner-spin-button {
 }
 
 ._webp .explore-img {
-  background: url("../assets/img/explore/explore_img.webp") center no-repeat;
+  position: relative;
+}
+
+._webp .explore-img1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 720px;
+  height: 100%;
+  background: url("../assets/img/explore/explore-img2.webp") left no-repeat;
+}
+
+._webp .explore-img2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 460px;
+  height: 100%;
+  background: url("../assets/img/explore/explore-img1.webp") 18px 0 no-repeat;
+  margin: 0px -18px 0px -18px;
+}
+
+._webp .explore-slider {
+  position: absolute;
+  z-index: 2;
+  width: 39px;
+  height: 100%;
+  left: 421px;
+  background: url("../assets/img/icons/explore/explore-slider.svg") center no-repeat;
+  cursor: pointer;
+}
+
+._webp .explore-slider:active {
+  cursor: col-resize;
 }
 
 ._webp .--video-item1 {
