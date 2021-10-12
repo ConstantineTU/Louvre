@@ -333,24 +333,24 @@ let galleryTransform = function (sup) {
 	getScroll()
 }
 
-function debounce(func, wait = 30, immediate = true) {
+function debounce(omg, wait = 30, immediate = true) {
 	var timeout
 	return function () {
 		var context = this, args = arguments
 		var later = function () {
 			timeout = null
-			if (!immediate) func.apply(context, args)
+			if (!immediate) omg.apply(context, args)
 		}
 		var callNow = immediate && !timeout
 		clearTimeout(timeout)
 		timeout = setTimeout(later, wait)
-		if (callNow) func.apply(context, args)
+		if (callNow) omg.apply(context, args)
 	}
 }
 
 
 
-function checkGalleryItem(e) {
+function checkGalleryItem() {
 	galleryItems.forEach(galleryItem => {
 
 		const itemInAt = (window.pageYOffset + window.innerHeight) - galleryItem.offsetHeight / 2
@@ -394,6 +394,78 @@ function showBookingTickets() {
 ticketsBtn.onclick = function () { showBookingTickets() }
 boockingTicketsClose.onclick = function () { showBookingTickets() }
 overlay.onclick = function () { showBookingTickets() }
+// Calc Tickets
+
+
+
+function getTickets() {
+	const ticketsType = document.querySelectorAll('.tickets-radio__input[name="ticketsType"]')
+	const numberMinusBasic = document.querySelector('.number-minus.basic')
+	const numberPlusBasic = document.querySelector('.number-plus.basic')
+	const numberMinusSenior = document.querySelector('.number-minus.senior')
+	const numberPlusSenior = document.querySelector('.number-plus.senior')
+
+	const ticketsSumEvro = document.querySelector('.tickets-evro')
+	const seniorTicket = document.querySelector('#senior65')
+	const basicTicket = document.querySelector('#basic18')
+	let ticketTypeArchiv = 20
+	let save = false
+	if (localStorage.getItem('save')) {
+		ticketsSumEvro.textContent = localStorage.getItem('ticketsSumEvro')
+		ticketTypeArchiv = localStorage.getItem('ticketTypeArchiv')
+		basicTicket.value = localStorage.getItem('basicTickets')
+		seniorTicket.value = localStorage.getItem('seniorTickets')
+		basicTicket.textContent = localStorage.getItem('basicTickets')
+		seniorTicket.textContent = localStorage.getItem('seniorTickets')
+		for (let i of ticketsType) {
+			if (i.id === localStorage.getItem('ticketTypeId')) {
+				i.checked = true
+			}
+		}
+	}
+	ticketsType.forEach(ticketType => (ticketType.addEventListener('change', setTicketType)))
+	numberMinusBasic.addEventListener('click', function () {
+		if (basicTicket.value > 0) basicTicket.value--
+		localStorage.setItem('basicTickets', basicTicket.value)
+		calcTicketsSum(ticketTypeArchiv)
+	})
+	numberPlusBasic.addEventListener('click', function () {
+		if (basicTicket.value < 20) basicTicket.value++
+		localStorage.setItem('basicTickets', basicTicket.value)
+		calcTicketsSum(ticketTypeArchiv)
+	})
+	numberMinusSenior.addEventListener('click', function () {
+		if (seniorTicket.value > 0) seniorTicket.value--
+		localStorage.setItem('seniorTickets', seniorTicket.value)
+		calcTicketsSum(ticketTypeArchiv)
+	})
+	numberPlusSenior.addEventListener('click', function () {
+		if (seniorTicket.value < 20) seniorTicket.value++
+		localStorage.setItem('seniorTickets', seniorTicket.value)
+		calcTicketsSum(ticketTypeArchiv)
+	})
+
+	function setTicketType(ticketType) {
+		ticketTypeArchiv = ticketType.target.value
+		calcTicketsSum(ticketTypeArchiv)
+		localStorage.setItem('ticketTypeId', ticketType.target.id)
+	}
+	function calcTicketsSum(ticketTypeArchiv) {
+
+
+		sum = ticketTypeArchiv * basicTicket.value + ticketTypeArchiv * (seniorTicket.value / 2)
+		ticketsSumEvro.textContent = sum
+		save = true
+		localStorage.setItem('save', save)
+		localStorage.setItem('ticketsSumEvro', ticketsSumEvro.textContent)
+		localStorage.setItem('ticketTypeArchiv', ticketTypeArchiv)
+
+
+
+	}
+}
+
+getTickets()
 
 // Burger-menu
 const burgerMenuWrap = document.querySelector('.header__burger')

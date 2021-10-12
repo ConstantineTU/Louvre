@@ -407,17 +407,17 @@
 										<h4 class="tickets-subtitle subtitle_left">Ticket Type</h4>
 										<div class="tickets-radio__container">
 											<input class="tickets-radio__input" checked type="radio" name="ticketsType"
-												id="permanent" value="Permanent exhibition">
+												id="permanent" value="20">
 											<label class="tickets-radio" for="permanent">Permanent exhibition</label>
 										</div>
 										<div class="tickets-radio__container">
 											<input class="tickets-radio__input" type="radio" name="ticketsType" id="temporary"
-												value="Temporary exhibition">
+												value="25">
 											<label class="tickets-radio" for="temporary">Temporary exhibition</label>
 										</div>
 										<div class="tickets-radio__container">
 											<input class="tickets-radio__input" type="radio" name="ticketsType" id="combined"
-												value="Combined Admission">
+												value="40">
 											<label class="tickets-radio" for="combined">Combined Admission</label>
 										</div>
 									</div>
@@ -426,30 +426,31 @@
 											<h4 class="tickets-subtitle subtitle_right">Amount</h4>
 											<p class="tickets-age age-basic --tickets">Basic 18+</p>
 											<div class="tickets-number__container --tickets">
-												<button class="number-minus --tickets" type="button"
-													onclick="this.nextElementSibling.stepDown()">
+												<button class="number-minus basic --tickets" type="button">
 													<img src="assets/img/icons/tickets/–.svg" alt="- image">
 												</button>
-												<input type="number" min="0" max="20" value="1" readonly class="number --tickets">
-												<button class="number-plus --tickets" type="button"
-													onclick="this.previousElementSibling.stepUp()">
+												<input id="basic18" type="number" min="0" max="20" value="1" readonly
+													class="number --tickets">
+												<button class="number-plus basic --tickets" type="button">
 													<img src="assets/img/icons/tickets/+.svg" alt="+ image">
 												</button>
 											</div>
 											<p class="tickets-age age-senior --tickets">Senior 65+</p>
 											<div class="tickets-number__container --tickets">
-												<button class="number-minus --tickets" type="button"
-													onclick="this.nextElementSibling.stepDown()">
-													<img src="assets/img/icons/tickets/–.svg" alt="- image">
+												<button class="number-minus senior --tickets" type="button" ">
+													<img src=" assets/img/icons/tickets/–.svg" alt="- image">
 												</button>
-												<input type="number" min="0" max="20" value="1" readonly class="number --tickets">
-												<button class="number-plus --tickets" type="button"
-													onclick="this.previousElementSibling.stepUp()">
-													<img src="assets/img/icons/tickets/+.svg" alt="+ image">
+												<input id="senior65" type="number" min="0" max="20" value="1" readonly
+													class="number --tickets">
+												<button class="number-plus senior --tickets" type="button" ">
+													<img src=" assets/img/icons/tickets/+.svg" alt="+ image">
 												</button>
 											</div>
+
+										</div>
+										<div>
 											<h4 class="tickets-subtitle subtitle-padding">Total €<span
-													class="tickets-evro">220</span>
+													class="tickets-evro">30</span>
 											</h4>
 										</div>
 										<button class="tickets-btn">Buy Now</button>
@@ -457,7 +458,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="boocking-tickets__popap">
 							<div class="boocking-tickets__container-wrap">
 								<div class="overlay"></div>
