@@ -2783,6 +2783,9 @@ input::-webkit-inner-spin-button {
 }
 
 .contacts-list__column {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 282px;
   margin: 0px 20px 0px 0px;
 }
@@ -2928,11 +2931,6 @@ input::-webkit-inner-spin-button {
   background: url("../assets/img/tickets/parallax1.webp") center no-repeat;
   background-size: cover;
   background-attachment: fixed;
-}
-
-._webp .contacts-map {
-  background: url("../assets/img/contacts/Rectangle.webp") center no-repeat;
-  background-size: contain;
 }
 
 ._no-webp .visiting-item {

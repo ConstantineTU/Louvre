@@ -566,71 +566,53 @@ burgerMenuWrap.onclick = function () {
 // 	console.log(circleEffect)
 // 	buttonPay.appendChild(circleEffect)
 
+//Map
+mapboxgl.accessToken = 'pk.eyJ1IjoiY29uc3RhbnRpbmV0dSIsImEiOiJja3VubGZ3ZWwxb2VtMnBydnd5Znp0NnJrIn0.S-omLoAjpdnjVeg6aRXpgg'
+let map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/mapbox/light-v10',
+	zoom: 16,
+	center: [2.3363, 48.86094],
+})
+map.addControl(new mapboxgl.NavigationControl())
 
-// })
 
+const marker1 = new mapboxgl.Marker({
+	color: "#232323",
+	scale: 0.90,
+}).setLngLat([2.336361, 48.860895])
+	.addTo(map)
+const marker2 = new mapboxgl.Marker({
+	color: "#757575",
+	scale: 0.90,
+}).setLngLat([2.33321, 48.86016])
+	.addTo(map)
+const marker3 = new mapboxgl.Marker({
+	color: "#757575",
+	scale: 0.90,
+}).setLngLat([2.33971, 48.86066])
+	.addTo(map)
+const marker4 = new mapboxgl.Marker({
+	color: "#757575",
+	scale: 0.90,
+}).setLngLat([2.3329, 48.8619])
+	.addTo(map)
+const marker5 = new mapboxgl.Marker({
+	color: "#757575",
+	scale: 0.90,
+}).setLngLat([2.33645, 48.86252])
+	.addTo(map)
 //
 console.group('%cCross-check: Museum-adaptive, ConstantineTU', 'color: red')
-console.log('%cНе выполненные пункты: все пункты выполнены', 'color: green')
+console.log('%cНе выполненные пункты: много пунктов не выполнено', 'color: green')
 console.log(
-	`Score 150 / 150
+	`Score ??? / 150
 
 	Выполненные пункты:
-	 Вёрстка соответствует макету. Ширина экрана 1024px +40
-			Блок header +4
-			Секция Welcome +4
-			Секция Visiting +4
-			Секция Explore +4
-			Секция Video +4
-			Секция Gallery +4
-			Секция Tickets +4
-			Форма покупки билетов +4
-			Секция Contacts +4
-			Блок footer +4
-	 Вёрстка соответствует макету. Ширина экрана 768px +40
-			Блок header +4
-			Секция Welcome +4
-			Секция Visiting +4
-			Секция Explore +4
-			Секция Video +4
-			Секция Gallery +4
-			Секция Tickets +4
-			Форма покупки билетов +4
-			Секция Contacts +4
-			Блок footer +4
-	 Вёрстка соответствует макету. Ширина экрана 420px +40
-			Блок header +4
-			Секция Welcome +4
-			Секция Visiting +4
-			Секция Explore +4
-			Секция Video +4
-			Секция Gallery +4
-			Секция Tickets +4
-	 Форма покупки билетов +4
-			Секция Contacts +4
-			Блок footer +4
-	 Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +6
-	 Совмещается адаптивная и респонсивная (резиновая) вёрстка +14 При изменении ширины экрана плавно изменяются размеры:
-			слайдера в секции Welcome +2
-			слайдера сравнения изображений в секции Explore +2
-			кастомного видеоплеера в секции Video +2
-			слайдера в секции Video +2
-			YouTube-видео в плейлисте в секции Video, маленькие видео выровнены по краям большого +2
-			галереи изображений и изображений в ней +2
-			карты +2
-	 На ширине экрана 1024рх и меньше реализовано адаптивное меню +12
-			при нажатии на бургер-иконку меню появляется, плавно выдвигаясь слева, бургер-иконка изменяется на крестик. При нажатии на крестик меню исчезает, плавно возвращаясь назад, иконка крестика превращается в бургер-иконку +2
-			ссылки в меню работают, обеспечивая плавную прокрутку по якорям +2
-			при клике по ссылке в адаптивном меню, или при клике по любому месту сайта, кроме самого адаптивного меню, меню закрывается +2
-			вёрстка меню соответствует макету на всех проверяемых разрешениях +6
-			
-	 Оптимизация скорости загрузки страницы +8 https://developers.google.com/speed/pagespeed/insights/. Результат проверки скорости сайта для мобильных устройств:
-			90 to 100 (green): Good - выполнено полностью +8`
+	 С вашего позволения, прошу вас отложить проверку до завтра, если это возможно, завтра я вас приятно удивлю`
 )
-console.log('	%cСкорость загрузки прошу проверить несколько раз, так как переодически он показывает странно низкие результаты', 'color: red')
-console.log('	%cИтого 160 баллов из 160', 'color: green')
+console.log('	%cИтого ??? баллов из 160', 'color: green')
 
-console.log('%cПрошу связаться со мной в дискорд https://discordapp.com/users/414360051101466624, если найдете ошибки', 'color: blue')
 console.log('%cСпасибо за проверку и удачи в учёбе!', 'color: green')
 
 console.groupEnd()
