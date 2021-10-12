@@ -206,11 +206,9 @@ const exploreSwipedetect = (el) => {
 		if (exploreImg2.clientWidth >= 19 && exploreImg2.clientWidth <= 736) {
 			exploreImg2.style.width = `${startNumberX + distX}px`
 			exploreScroller.style.left = `${startLeft + distX}px`
-			console.log(exploreImg2.style.width)
 			e.preventDefault()
 			endNumberX = startNumberX + distX
 			endLeft = startLeft + distX
-			console.log(exploreScroller.style.left)
 			if (endNumberX < 19) {
 				endNumberX = 19
 				endLeft = -19
@@ -223,11 +221,9 @@ const exploreSwipedetect = (el) => {
 				exploreImg2.style.width = `${endNumberX}px`
 				exploreScroller.style.left = `${endLeft}px`
 			}
-			console.log(endNumberX)
 		}
 	}
 	function stopMovePicture(e) {
-		console.log(e)
 		body.removeEventListener('mousemove', movePicture)
 		startNumberX = endNumberX
 		startLeft = endLeft
@@ -266,6 +262,7 @@ if (localStorage.getItem('volume-progress')) {
 }
 
 // Section Gallery
+let galleryItems
 let galleryTransform = function (sup) {
 	const pictureInnerContainer = document.querySelector('.gallery_inner-items');
 	let arrPictures
@@ -320,7 +317,6 @@ let galleryTransform = function (sup) {
 		const galleryImg = document.createElement("img");
 		galleryImg.classList.add("gallery-img"), galleryImg.src = t, galleryImg.alt = "Gallery Picture",
 			pictureInnerContainer.append(galleryItem), galleryItem.append(galleryImg), galleryImg.onload = function () {
-				//console.log(this.height)
 				const imgHeight = this.naturalHeight;
 				if (imgHeight >= 570) {
 					galleryItem.classList.add("long")
@@ -332,9 +328,47 @@ let galleryTransform = function (sup) {
 				}
 			}
 	}));
+
+	galleryItems = document.querySelectorAll('.gallery-item')
+	getScroll()
+}
+
+function debounce(func, wait = 30, immediate = true) {
+	var timeout
+	return function () {
+		var context = this, args = arguments
+		var later = function () {
+			timeout = null
+			if (!immediate) func.apply(context, args)
+		}
+		var callNow = immediate && !timeout
+		clearTimeout(timeout)
+		timeout = setTimeout(later, wait)
+		if (callNow) func.apply(context, args)
+	}
 }
 
 
+
+function checkGalleryItem(e) {
+	galleryItems.forEach(galleryItem => {
+
+		const itemInAt = (window.pageYOffset + window.innerHeight) - galleryItem.offsetHeight / 2
+		const imageBottom = (galleryItem.offsetTop + galleryItem.offsetHeight)
+		const isHalfShown = itemInAt > galleryItem.offsetTop
+		const isNotScrolledPast = (window.pageYOffset - 3450) < imageBottom
+		if (isHalfShown && !isNotScrolledPast) {
+			galleryItem.classList.add('active')
+		} else {
+			galleryItem.classList.remove('active')
+		}
+		if (window.pageYOffset > 6720) {
+			galleryItem.classList.remove('active')
+		}
+	})
+}
+
+function getScroll() { window.addEventListener('scroll', debounce(checkGalleryItem)) }
 // Button tickets
 
 const ticketsBtn = document.querySelector('.tickets-btn')
