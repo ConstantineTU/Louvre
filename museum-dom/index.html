@@ -289,16 +289,10 @@
 								<div class="video-info-left "></div>
 								<div class="video-info-right "></div>
 								<div class="video__content">
-									<video class="video-item active" src="assets/videos/video0.mp4"
-										poster="assets/img/video/poster0.webp"></video>
-									<video class="video-item" src="assets/videos/video1.mp4"
+
+									<video class="video-item active" src="assets/videos/video3.mp4"
 										poster="assets/img/video/poster3.webp"></video>
-									<video class="video-item" src="assets/videos/video2.mp4"
-										poster="assets/img/video/poster1.webp"></video>
-									<video class="video-item" src="assets/videos/video3.mp4"
-										poster="assets/img/video/poster2.webp"></video>
-									<video class="video-item" src="assets/videos/video4.mp4"
-										poster="assets/img/video/poster4.webp"></video>
+
 								</div>
 								<!-- <picture>
 									<source srcset="assets/img/video/Rectangle.webp" type="image/webp">
@@ -318,7 +312,7 @@
 								</div>
 								<div class="video-panel__progress -video">
 
-									<input type="range" value="54" min="0" max="100" step="1" class="video-progress"
+									<input type="range" value="0" min="0" max="100" step="1" class="video-progress"
 										name="playbackRate">
 
 								</div>
@@ -340,40 +334,8 @@
 						</div>
 						<div class="video-slider">
 							<div class="video-slider__videos">
-								<div class="iframe-wrap">
-									<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
-									html,body{height:100%}
-									img{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
-									div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
-									span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
-									body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
-									<a href=https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI?autoplay=1>
-										<img src=assets/img/video/slides/slide_item1.webp alt='video-slede-1'>
-											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
-										
-										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
-									</a>
-
-							" src="https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI" title="YouTube video player"
-										allowfullscreen></iframe>
-								</div>
-								<div class="iframe-wrap">
-									<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
-										html,body{height:100%}
-										img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
-										span{position:absolute;width:100%;top:0;bottom:0;margin:auto;d}
-										body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
-										<a href=https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo?autoplay=1>
-											<img src=assets/img/video/slides/slide_item2.webp alt='video-slede-2'>
-											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
-										
-										</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
-									</a>
-										" src="https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo" title="YouTube video player"
-										allowfullscreen></iframe>
-								</div>
-								<div class="iframe-wrap">
-									<iframe class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+								<div class="iframe-wrap active">
+									<iframe id="iframe1" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
 												html,body{height:100%}
 												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
 												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
@@ -383,9 +345,163 @@
 												
 											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
 											
+											</div><span  class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+										</a>
+										
+												" src="https://www.youtube-nocookie.com/embed/NOhDysLnTvY" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe2" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+												html,body{height:100%}
+												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+												<a href=https://www.youtube-nocookie.com/embed/2OR0OCr6uRE?autoplay=1>
+													<img src=assets/img/video/slides/slide_item4.webp alt='video-slede-4'>
+												
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+											
 											</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
 										</a>
+										
+												" src="https://www.youtube-nocookie.com/embed/2OR0OCr6uRE" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe3" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+												html,body{height:100%}
+												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+												<a href=https://www.youtube-nocookie.com/embed/zp1BXPX8jcU?autoplay=1>
+													<img src=assets/img/video/slides/slide_item0.webp alt='video-slede-0'>
+												
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+											
+											</div><span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+										</a>
+										
+												" src="https://www.youtube-nocookie.com/embed/zp1BXPX8jcU" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe4" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+									html,body{height:100%}
+									img{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+									div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+									span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+									body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+									<a href=https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI?autoplay=1>
+										<img src=assets/img/video/slides/slide_item1.webp alt='video-slede-1'>
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+										
+										</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+									</a>
+									
+
+							" src="https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe5" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+										html,body{height:100%}
+										img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+										span{position:absolute;width:100%;top:0;bottom:0;margin:auto;d}
+										body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+										<a href=https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo?autoplay=1>
+											<img src=assets/img/video/slides/slide_item2.webp alt='video-slede-2'>
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+										
+										</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+									</a>
+									
+										" src="https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe6" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+												html,body{height:100%}
+												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+												<a href=https://www.youtube-nocookie.com/embed/NOhDysLnTvY?autoplay=1>
+													<img src=assets/img/video/slides/slide_item3.webp alt='video-slede-3'>
+												
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+											
+											</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+										</a>
+										
 												" src="https://www.youtube-nocookie.com/embed/NOhDysLnTvY" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe7" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+												html,body{height:100%}
+												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+												<a href=https://www.youtube-nocookie.com/embed/2OR0OCr6uRE?autoplay=1>
+													<img src=assets/img/video/slides/slide_item4.webp alt='video-slede-4'>
+												
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+											
+											</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+										</a>
+									
+												" src="https://www.youtube-nocookie.com/embed/2OR0OCr6uRE" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+
+								<div class="iframe-wrap active">
+									<iframe id="iframe8" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+												html,body{height:100%}
+												img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+												body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+												<a href=https://www.youtube-nocookie.com/embed/zp1BXPX8jcU?autoplay=1>
+													<img src=assets/img/video/slides/slide_item0.webp alt='video-slede-0'>
+												
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+											
+											</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+										</a>
+										
+												" src="https://www.youtube-nocookie.com/embed/zp1BXPX8jcU" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe9" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+									html,body{height:100%}
+									img{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+									div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+									span{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+									body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+									<a href=https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI?autoplay=1>
+										<img src=assets/img/video/slides/slide_item1.webp alt='video-slede-1'>
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+										
+										</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+									</a>
+									
+							" src="https://www.youtube-nocookie.com/embed/aWmJ5DgyWPI" title="YouTube video player"
+										allowfullscreen></iframe>
+								</div>
+								<div class="iframe-wrap active">
+									<iframe id="iframe10" class="video-iframe" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+										html,body{height:100%}
+										img,div{position:absolute;width:100%;top:0;bottom:0;margin:auto;}
+										span{position:absolute;width:100%;top:0;bottom:0;margin:auto;d}
+										body:hover div{filter: invert(14%) sepia(88%) saturate(6669%) hue-rotate(356deg) brightness(89%) contrast(128%);} </style>
+										<a href=https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo?autoplay=1>
+											<img src=assets/img/video/slides/slide_item2.webp alt='video-slede-2'>
+											<div style='background: url(assets/img/video/slides/youtube_icon_bg.webp) center no-repeat;'>
+										
+										</div><span class=iframe-span style='background: url(assets/img/video/slides/youtube_icon_play.webp) center no-repeat;'></span>
+									</a>
+									
+										" src="https://www.youtube-nocookie.com/embed/Vi5D6FKhRmo" title="YouTube video player"
 										allowfullscreen></iframe>
 								</div>
 							</div>
@@ -393,11 +509,11 @@
 								<button type="button" class="video-slider__arrow-left video__button-playlist"></button>
 								<div class="video-slider__items-container">
 									<ul class="video-slider__items">
-										<li class="video-slider__item active"></li>
-										<li class="video-slider__item"></li>
-										<li class="video-slider__item"></li>
-										<li class="video-slider__item"></li>
-										<li class="video-slider__item"></li>
+										<li value="0" class="video-slider__item active"></li>
+										<li value="1" class="video-slider__item"></li>
+										<li value="2" class="video-slider__item"></li>
+										<li value="3" class="video-slider__item"></li>
+										<li value="4" class="video-slider__item"></li>
 									</ul>
 								</div>
 								<button type="button" class="video-slider__arrow-right video__button-playlist"></button>

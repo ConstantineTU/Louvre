@@ -700,10 +700,10 @@ footer {
   position: relative;
   z-index: -2;
   margin: 0 auto;
-  -webkit-animation: 0.5s ease-in-out;
-          animation: 0.5s ease-in-out;
   -o-object-fit: contain;
      object-fit: contain;
+  -webkit-animation: 0.5s ease-in-out;
+          animation: 0.5s ease-in-out;
 }
 
 .welcome-carousel-item.active,
@@ -1219,12 +1219,32 @@ footer {
 }
 
 .video-item {
-  display: none;
+  display: block;
   width: 1440px;
+  -webkit-animation: 0s ease-in-out;
+          animation: 0s ease-in-out;
 }
 
-.video-item.active {
-  display: block;
+.video-item.to-left {
+  -webkit-animation-name: left;
+          animation-name: left;
+}
+
+.video-item.to-right {
+  -webkit-animation-name: right;
+          animation-name: right;
+  animation-direction: reverse;
+}
+
+.video-item.from-left {
+  -webkit-animation-name: left;
+          animation-name: left;
+  animation-direction: reverse;
+}
+
+.video-item.from-right {
+  -webkit-animation-name: right;
+          animation-name: right;
 }
 
 .video-item.active.fullscreen {
@@ -1399,9 +1419,9 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: -webkit-gradient(linear, left top, right top, from(var(--dark-red)), color-stop(54%, var(--dark-red)), color-stop(54%, #c4c4c4), to(#c4c4c4));
-  background: -o-linear-gradient(left, var(--dark-red) 0%, var(--dark-red) 54%, #c4c4c4 54%, #c4c4c4 100%);
-  background: linear-gradient(to right, var(--dark-red) 0%, var(--dark-red) 54%, #c4c4c4 54%, #c4c4c4 100%);
+  background: -webkit-gradient(linear, left top, right top, from(var(--dark-red)), color-stop(0%, var(--dark-red)), color-stop(0%, #c4c4c4), to(#c4c4c4));
+  background: -o-linear-gradient(left, var(--dark-red) 0%, var(--dark-red) 0%, #c4c4c4 0%, #c4c4c4 100%);
+  background: linear-gradient(to right, var(--dark-red) 0%, var(--dark-red) 0%, #c4c4c4 0%, #c4c4c4 100%);
   height: 8px;
   width: 100%;
   outline: none;
@@ -1493,16 +1513,18 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 
 .video-slider__videos {
+  position: relative;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-column-gap: 0;
-     -moz-column-gap: 0;
-          column-gap: 0;
+  -webkit-column-gap: 42.5px;
+     -moz-column-gap: 42.5px;
+          column-gap: 42.5px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1516,6 +1538,13 @@ footer {
   margin: 0px 0px 40px 0px;
   -o-object-fit: contain;
      object-fit: contain;
+  left: -495px;
+}
+
+.video-slider__videos.transitioned {
+  -webkit-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
 }
 
 .video-slider__videos .video-iframe {
@@ -1614,6 +1643,8 @@ footer {
   -o-transition: 0.4s;
   transition: 0.4s;
   cursor: pointer;
+  -webkit-animation: 0s ease-in-out;
+          animation: 0s ease-in-out;
 }
 
 .video-slider__item.active {
@@ -1622,6 +1653,33 @@ footer {
 
 .video-slider__item:hover {
   background-color: var(--dark-red);
+}
+
+.video-slider__item.to-left {
+  -webkit-animation-name: left;
+          animation-name: left;
+}
+
+.video-slider__item.to-right {
+  -webkit-animation-name: right;
+          animation-name: right;
+  animation-direction: reverse;
+}
+
+.video-slider__item.from-left {
+  -webkit-animation-name: left;
+          animation-name: left;
+  animation-direction: reverse;
+}
+
+.video-slider__item.from-right {
+  -webkit-animation-name: right;
+          animation-name: right;
+}
+
+.video-slider__item.active.fullscreen {
+  height: 100%;
+  width: 100%;
 }
 
 .video-slider__arrow-left {
@@ -1649,19 +1707,13 @@ footer {
 }
 
 .iframe-wrap {
+  display: block;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+      -ms-flex: 1 0 452px;
+          flex: 1 0 452px;
   height: 100%;
-  margin: 0px 10px;
-}
-
-.iframe-wrap:first-child {
-  margin: 0px 10px 0px 0px;
-}
-
-.iframe-wrap:last-child {
-  margin: 0px 0px 0px 10px;
+  -webkit-animation: 0.5s ease-in-out;
+          animation: 0.5s ease-in-out;
 }
 
 .--video-item1,

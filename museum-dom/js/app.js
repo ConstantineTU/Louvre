@@ -252,6 +252,10 @@ const swipedetect = (el) => {
 }
 let el = document.querySelector('.welcome-carousel')
 swipedetect(el)
+
+
+
+
 // Section Explore
 
 
@@ -305,26 +309,23 @@ const exploreSwipedetect = (el) => {
 let exploreSlider = document.querySelector('#explore-slider')
 exploreSwipedetect(exploreSlider)
 
+
+
+
 // Section Video
 // video-player
 
 
-function showMeVideo() {
-	let videoProgress = document.querySelector('.video-progress');
+
+let videoProgress = document.querySelector('.video-progress');
+function showMeVideo(videoSrc) {
 	let volumeProgress = document.querySelector('.volume-progress');
 
-	videoProgress.addEventListener('input', function () {
-		console.log(this)
-		const value = this.value;
-		this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
-		// localStorage.setItem('video-progress', this.style.background)
-		// localStorage.setItem('video-value', value)
-	})
 	volumeProgress.addEventListener('input', function () {
 		const value = this.value;
 		this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
-		// localStorage.setItem('volume-progress', this.style.background)
-		// localStorage.setItem('volume-value', value)
+		localStorage.setItem('volume-progress', this.style.background)
+		localStorage.setItem('volume-value', value)
 
 		video.volume = value / 100
 		if (!video.volume && !videoVolume.classList.contains('toggle')) {
@@ -337,25 +338,26 @@ function showMeVideo() {
 
 
 
-	const player = document.querySelector('.player')
-	const video = player.querySelector('.video-item.active')
+	let player = document.querySelector('.player')
+	let video = videoSrc
 
-	const videoPlayFrame = player.querySelector('#video-play-big')
-	const videoPlay = player.querySelector('#video-play-mini')
-	const videoVolume = player.querySelector('#video-volume')
-	const videoFullscreen = player.querySelector('#video-fullscreen')
-	const videoPanel = player.querySelector('.video-panel')
-	const videoPanelProgress = player.querySelector('.video-panel__progress.-video')
-	const volumePanelProgress = player.querySelector('.volume-progress.__audio')
-	const videoInfoTop = player.querySelector('.video-info-top')
-	const videoLow = player.querySelector('.video-info-left')
-	const videoFast = player.querySelector('.video-info-right')
+	let videoPlayFrame = player.querySelector('#video-play-big')
+	let videoPlay = player.querySelector('#video-play-mini')
+	let videoVolume = player.querySelector('#video-volume')
+	let videoFullscreen = player.querySelector('#video-fullscreen')
+	let videoPanel = player.querySelector('.video-panel')
+	let videoPanelProgress = player.querySelector('.video-panel__progress.-video')
+	let volumePanelProgress = player.querySelector('.volume-progress.__audio')
+	let videoInfoTop = player.querySelector('.video-info-top')
+	let videoLow = player.querySelector('.video-info-left')
+	let videoFast = player.querySelector('.video-info-right')
+	let shiftFlag = false
 
 
-
-	function checkPressSpace(e) {
+	function checkPressShift(e) {
 
 	}
+
 	window.onkeydown = function (e) {
 		e.preventDefault()
 		if (e.keyCode === 32) {
@@ -367,33 +369,10 @@ function showMeVideo() {
 		if (e.keyCode === 70) {
 			showFullscreenMode()
 		}
-
-	}
-	video.ondubbleclick = function () {
-		console.log(1)
-	}
-
-
-	function runOnKeys(func, ...codes) {
-		let pressed = new Set();
-
-		document.addEventListener('keydown', function (e) {
-			pressed.add(e.keyCode);
-
-			for (let code of codes) { // все ли клавиши из набора нажаты?
-				if (!pressed.has(code)) {
-					return;
-				}
-			}
-			pressed.clear();
-			func();
-		});
-		document.addEventListener('keyup', function (e) {
-			pressed.delete(e.keyCode);
-		});
-	}
-	runOnKeys(
-		function () {
+		if (e.keyCode === 16) {
+			shiftFlag = true
+		}
+		if (e.keyCode === 190 && shiftFlag) {
 			if (video.playbackRate !== 2) {
 				video.playbackRate += 0.25
 				videoInfoTop.textContent = `x${video.playbackRate}`
@@ -405,12 +384,7 @@ function showMeVideo() {
 				videoFast.style.opacity = 0
 			}, 700);
 
-		},
-		16,
-		190
-	);
-	runOnKeys(
-		function () {
+		} else if (e.keyCode === 188 && shiftFlag) {
 			if (video.playbackRate !== 0.25) {
 				video.playbackRate -= 0.25
 				videoInfoTop.textContent = `x${video.playbackRate}`
@@ -421,15 +395,21 @@ function showMeVideo() {
 				videoInfoTop.style.opacity = 0
 				videoLow.style.opacity = 0
 			}, 700);
+		}
+	}
 
-		},
-		16,
-		188
-	);
+	window.addEventListener('keyup', function (e) {
+		if (e.keyCode === 16) {
+			shiftFlag = false
+			console.log(shiftFlag)
 
-	// videoPlay.addEventListener('keydown', function (e) {
+		}
 
-	// })
+	})
+	video.ondubbleclick = function () {
+		console.log(1)
+	}
+
 
 	function togglePlay() {
 		const method = video.paused ? 'play' : 'pause'
@@ -505,20 +485,437 @@ function showMeVideo() {
 	videoProgress.addEventListener('mouseup', removeMousemoveRanges)
 
 	// Save settings
-	// if (localStorage.getItem('video-progress')) {
-	// 	videoProgress.style.background = localStorage.getItem('video-progress')
-	// 	videoProgress.value = localStorage.getItem('video-value')
-	// }
-	// if (localStorage.getItem('volume-progress')) {
-	// 	volumeProgress.style.background = localStorage.getItem('volume-progress')
-	// 	volumeProgress.value = localStorage.getItem('volume-value')
-	// }
+
+	if (localStorage.getItem('volume-progress')) {
+		volumeProgress.style.background = localStorage.getItem('volume-progress')
+		volumeProgress.value = localStorage.getItem('volume-value')
+	}
 }
-showMeVideo()
+let video = document.querySelector('.video-item.active')
+showMeVideo(video)
+
+
+
+// Video-slider
+
+let itemsVideo = document.querySelectorAll('.iframe-wrap')
+let itemsVideoContainer = document.querySelector('.video-slider__videos')
+// let sliderItemWelcome = document.querySelectorAll('.welcome-slider__item')
+let currentItemVideo = 0
+let isEnabledVideo = true
+let currentVideoContainer = -1485
+itemsVideoContainer.style.left = `${currentVideoContainer}px`
 
 
 
 
+// document.querySelector('.video-slider__arrow-left').addEventListener('click', function () {
+
+// })
+
+// document.querySelector('.video-slider__arrow-right').addEventListener('click', function () {
+
+// 	// window.onhashchange = function () {
+// 	// 	if (window.innerDocClick) {
+// 	// 		window.innerDocClick = false;
+// 	// 	} else {
+// 	// 		if (window.location.hash != '#undefined') {
+// 	// 			goBack();
+// 	// 		} else {
+// 	// 			history.pushState("", document.title, window.location.pathname);
+// 	// 			location.reload();
+// 	// 		}
+// 	// 	}
+// 	// }
+// })
+
+
+
+
+
+
+
+
+
+
+let itemsVideoMain = document.querySelectorAll('.video-item')
+let sliderItemVideoMain = document.querySelectorAll('.video-slider__item')
+let currentItemVideoMain = 0
+let isEnabledVideoMain = true
+
+function normalizeProgressVideoTIme() {
+	videoProgress.value = 0
+	videoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${0}%, #c4c4c4 ${0}%, #c4c4c4 100%)`
+}
+let videosIframe = window.parent.document.querySelectorAll('.video-iframe');
+
+function reload_iframes() {
+	for (let ifr of videosIframe) {
+		ifr.contentWindow.location.reload(true)
+	};
+};
+videosIframe.forEach(frame => (frame.addEventListener('click', reload_iframes)))
+function swipeMainVideo(web) {
+	let slide = web
+	if (slide.value === 0) {
+		video.pause()
+		setTimeout(() => {
+			video.src = 'assets/videos/video3.mp4'
+			video.poster = 'assets/img/video/poster3.webp'
+			setTimeout(() => {
+				normalizeProgressVideoTIme()
+			}, 0);
+
+		}, 100);
+	} else if (slide.value === 1) {
+		video.pause()
+		setTimeout(() => {
+			video.src = 'assets/videos/video1.mp4'
+			video.poster = 'assets/img/video/poster1.webp'
+			setTimeout(() => {
+				normalizeProgressVideoTIme()
+			}, 0);
+		}, 100);
+	} else if (slide.value === 2) {
+		video.pause()
+		setTimeout(() => {
+			video.src = 'assets/videos/video2.mp4'
+			video.poster = 'assets/img/video/poster2.webp'
+			setTimeout(() => {
+				normalizeProgressVideoTIme()
+			}, 0);
+		}, 100);
+	} else if (slide.value === 3) {
+		video.pause()
+		setTimeout(() => {
+			video.src = 'assets/videos/video4.mp4'
+			video.poster = 'assets/img/video/poster4.webp'
+			setTimeout(() => {
+				normalizeProgressVideoTIme()
+			}, 0);
+		}, 100);
+	} else if (slide.value === 4) {
+		video.pause()
+		setTimeout(() => {
+			video.src = 'assets/videos/video0.mp4'
+			video.poster = 'assets/img/video/poster0.webp'
+			setTimeout(() => {
+				normalizeProgressVideoTIme()
+			}, 0);
+		}, 100);
+	}
+}
+sliderItemVideoMain.forEach(slide => (slide.addEventListener('click', function () {
+	if (isEnabledVideoMain) {
+		if (slide.value === 0) {
+			console.log(0)
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			currentVideoContainer = -1485
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			video.pause()
+			setTimeout(() => {
+				video.src = 'assets/videos/video3.mp4'
+				video.poster = 'assets/img/video/poster3.webp'
+				setTimeout(() => {
+					normalizeProgressVideoTIme()
+				}, 0);
+			}, 100);
+		} else if (slide.value === 1) {
+			console.log(1)
+
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			currentVideoContainer = -1980
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			video.pause()
+			setTimeout(() => {
+				video.src = 'assets/videos/video1.mp4'
+				video.poster = 'assets/img/video/poster1.webp'
+				setTimeout(() => {
+					normalizeProgressVideoTIme()
+				}, 0);
+
+			}, 100);
+		} else if (slide.value === 2) {
+			console.log(2)
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			currentVideoContainer = -2475
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			video.pause()
+			setTimeout(() => {
+				video.src = 'assets/videos/video2.mp4'
+				video.poster = 'assets/img/video/poster2.webp'
+				setTimeout(() => {
+					normalizeProgressVideoTIme()
+				}, 0);
+
+			}, 100);
+		} else if (slide.value === 3) {
+			console.log(3)
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			currentVideoContainer = -2970
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			video.pause()
+			setTimeout(() => {
+				video.src = 'assets/videos/video4.mp4'
+				video.poster = 'assets/img/video/poster4.webp'
+				setTimeout(() => {
+					normalizeProgressVideoTIme()
+				}, 0);
+
+			}, 100);
+		} else if (slide.value === 4) {
+			console.log(4)
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			currentVideoContainer = -3465
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			video.pause()
+			setTimeout(() => {
+				video.src = 'assets/videos/video0.mp4'
+				video.poster = 'assets/img/video/poster0.webp'
+				setTimeout(() => {
+					normalizeProgressVideoTIme()
+				}, 0);
+
+			}, 100);
+		}
+
+
+		if (slide.value > currentItemVideoMain) {
+			console.log(1)
+
+			hideItemVideoMain('to-left')
+			changeCurrentItemVideoMain(slide.value)
+			showItemVideoMain('from-right')
+		} else if (slide.value < currentItemVideoMain) {
+			hideItemVideoMain('to-right')
+			changeCurrentItemVideoMain(slide.value)
+			showItemVideoMain('from-left')
+		}
+	}
+})))
+
+function changeCurrentItemVideoMain(n) {
+	for (let bullet of sliderItemVideoMain) {
+		bullet.classList.remove('active')
+	}
+	currentItemVideoMain = (n + sliderItemVideoMain.length) % sliderItemVideoMain.length
+	sliderItemVideoMain[currentItemVideoMain].classList.add('active')
+}
+
+function hideItemVideoMain(direction) {
+	isEnabledVideoMain = false
+	sliderItemVideoMain[currentItemVideoMain].classList.add(direction)
+	sliderItemVideoMain[currentItemVideoMain].addEventListener('animationend', function () {
+		this.classList.remove('active', direction)
+	})
+}
+
+function showItemVideoMain(direction) {
+	sliderItemVideoMain[currentItemVideoMain].classList.add('next', direction)
+	sliderItemVideoMain[currentItemVideoMain].addEventListener('animationend', function () {
+		this.classList.remove('next', direction)
+		this.classList.add('active')
+		isEnabledVideoMain = true
+
+		// video.load()
+		// video = document.querySelector('.video-item.active')
+		// video.load()
+		// showMeVideo(video)
+		// video.load()
+	})
+}
+function previousItemVideoMain(n) {
+	hideItemVideoMain('to-right')
+	changeCurrentItemVideoMain(n - 1)
+	showItemVideoMain('from-left')
+	swipeMainVideo(sliderItemVideoMain[currentItemVideoMain])
+
+}
+function nextItemVideoMain(n) {
+	hideItemVideoMain('to-left')
+	changeCurrentItemVideoMain(n + 1)
+	showItemVideoMain('from-right')
+	swipeMainVideo(sliderItemVideoMain[currentItemVideoMain])
+
+}
+
+document.querySelector('.video-slider__arrow-left').addEventListener('click', function () {
+	if (isEnabledVideoMain) {
+		if (currentVideoContainer === -990) {
+			itemsVideoContainer.style.transition = 'none'
+			currentVideoContainer = -3465
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			setTimeout(() => {
+				itemsVideoContainer.style.transition = 'all 0.2s'
+				itemsVideoContainer.style.left = `${currentVideoContainer + 495}px`
+				currentVideoContainer += 495
+			}, 0);
+		} else {
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			itemsVideoContainer.style.left = `${currentVideoContainer + 495}px`
+			currentVideoContainer += 495
+		}
+		if (isEnabledVideoMain) {
+			previousItemVideoMain(currentItemVideoMain)
+		}
+	}
+})
+
+document.querySelector('.video-slider__arrow-right').addEventListener('click', function () {
+	if (isEnabledVideoMain) {
+		if (currentVideoContainer === -3465) {
+			itemsVideoContainer.style.transition = 'none'
+			currentVideoContainer = -990
+			itemsVideoContainer.style.left = `${currentVideoContainer}px`
+			setTimeout(() => {
+				itemsVideoContainer.style.transition = 'all 0.2s'
+				itemsVideoContainer.style.left = `${currentVideoContainer - 495}px`
+				currentVideoContainer -= 495
+			}, 0);
+		} else {
+			itemsVideoContainer.style.transition = 'all 0.2s'
+			itemsVideoContainer.style.left = `${currentVideoContainer - 495}px`
+			currentVideoContainer -= 495
+		}
+		if (isEnabledVideoMain) {
+			nextItemVideoMain(currentItemVideoMain)
+		}
+	}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+// IFRAME RELOAD
+// let videosIframe = document.querySelectorAll('.video-iframe')
+// let arrIframesLoading = []
+// videosIframe.forEach(videoIframe => (videoIframe.addEventListener('load', function () {
+// 	console.log('Ya IFRAME')
+// 	arrIframesLoading.push(this)
+// 	console.log(arrIframesLoading)
+
+// 	for (let ifr of videosIframe) {
+// 	}
+// })))
+// arrIframesLoading = []
+// console.log(arrIframesLoading)
+// let players = document.querySelectorAll('.html5-video-player')
+// players.stopVideo()
+
+
+
+
+
+// sliderItemWelcome.forEach(slide => (slide.addEventListener('click', function () {
+// 	if (isEnabled) {
+// 		if (slide.value > currentItemWlcome) {
+// 			hideItem('to-left')
+// 			changeCurrentItem(slide.value)
+// 			showItem('from-right')
+// 		} else if (slide.value < currentItemWlcome) {
+// 			hideItem('to-right')
+// 			changeCurrentItem(slide.value)
+// 			showItem('from-left')
+// 		}
+// 	}
+// })))
+
+// function changeCurrentItemVideo(n) {
+// 	// for (let bullet of sliderItemWelcome) {
+// 	// 	bullet.classList.remove('active')
+// 	// }
+// 	currentItemVideo = (n + itemsWelcome.length) % itemsWelcome.length
+// 	// sliderItemWelcome[currentItemVideo].classList.add('active')
+// }
+
+// function hideItemVideo(direction) {
+// 	isEnabledVideo = false
+// 	itemsVideoContainer.classList.add(direction)
+// 	itemsVideo[currentItemVideo].classList.add(direction)
+// 	itemsVideoContainer.addEventListener('animationend', function () {
+// 		itemsVideoContainer.classList.remove('active', direction)
+// 		itemsVideo[currentItemVideo + 1].classList.remove('active', direction)
+// 	})
+// }
+
+// function showItemVideo(direction) {
+// 	itemsVideoContainer.classList.add('next', direction)
+// 	itemsVideo[currentItemVideo].classList.add('next', direction)
+// 	itemsVideoContainer.addEventListener('animationend', function () {
+// 		itemsVideoContainer.classList.remove('next', direction)
+// 		itemsVideo[currentItemVideo].classList.remove('next', direction)
+// 		itemsVideo[currentItemVideo].classList.add('active')
+// 		isEnabledVideo = true
+// 	})
+// }
+
+// function previousItemVideo(n) {
+// 	hideItemVideo('to-right')
+// 	changeCurrentItemVideo(n - 1)
+// 	showItemVideo('from-left')
+// }
+// function nextItemVideo(n) {
+// 	hideItemVideo('to-left')
+// 	changeCurrentItemVideo(n + 1)
+// 	showItemVideo('from-right')
+// }
+
+
+
+// const swipedetect = (el) => {
+
+
+// 	let surface = el
+// 	let startX = 0
+// 	let startY = 0
+// 	let distX = 0
+// 	let distY = 0
+
+// 	let startTime = 0
+// 	let elapsedTime = 0
+
+// 	let threshold = 100
+// 	let restraint = 100
+// 	let allowedTime = 400
+
+// 	surface.addEventListener('mousedown', function (e) {
+// 		startX = e.pageX
+// 		startY = e.pageY
+// 		startTime = new Date().getTime()
+// 		e.preventDefault()
+// 	})
+
+// 	surface.addEventListener('mouseup', function (e) {
+// 		distX = e.pageX - startX
+// 		distY = e.pageX - startY
+// 		elapsedTime = new Date().getTime() - startTime
+// 		if (elapsedTime <= allowedTime) {
+// 			if (Math.abs(distX) > threshold && Math.abs(distY) > restraint) {
+// 				if (distX > 0) {
+// 					if (isEnabled) {
+// 						previousItem(currentItemWlcome)
+// 					}
+// 				} else {
+// 					if (isEnabled) {
+// 						nextItem(currentItemWlcome)
+// 					}
+// 				}
+// 			}
+// 		}
+// 		e.preventDefault()
+// 	})
+// }
+// let el = document.querySelector('.welcome-carousel')
+// swipedetect(el)
 
 
 
