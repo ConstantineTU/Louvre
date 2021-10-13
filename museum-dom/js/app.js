@@ -19,7 +19,79 @@ testWebP(function (support) {
 		document.querySelector('html').classList.add('_no-webp');
 	}
 });
+// header
+// Burger-menu
+const burgerMenuWrap = document.querySelector('.header__burger')
+const navMenuLink = document.querySelectorAll('.nav-menu__link')
+const contentDocument = document.querySelectorAll('.content._container')
+const welcomeOverlay = document.querySelector('.welcome__overlay')
 
+const burgerMenu = document.querySelector('.header__burger-menu')
+const burgerMenuActive = document.querySelector('.header__burger-menu__active')
+const headerNav = document.querySelector('.header-nav')
+const sectionTitle = document.querySelector('.section-title')
+const sectionSubTittle = document.querySelector('.section-subtittle')
+const welcomeLink = document.querySelector('.welcome-link')
+
+function getMenu(t) {
+	if (burgerMenuActive.classList[1] !== 'active') {
+		showBurgerMenu(t)
+	} else {
+		closeBurgerMenu(t)
+	}
+}
+
+function showBurgerMenu(t) {
+	setTimeout(() => {
+		burgerMenuActive.classList.add('active')
+	}, t);
+	burgerMenu.classList.add('active')
+	headerNav.classList.add('active')
+	sectionTitle.classList.add('active')
+	sectionSubTittle.classList.add('active')
+	welcomeLink.classList.add('active')
+	welcomeOverlay.classList.add('active')
+	// lockBody.classList.add('_lock')
+
+}
+function removeMenu() {
+	burgerMenu.classList.remove('active')
+	headerNav.classList.remove('active')
+	sectionTitle.classList.remove('active')
+	sectionSubTittle.classList.remove('active')
+	welcomeLink.classList.remove('active')
+	burgerMenuActive.classList.remove('active')
+	welcomeOverlay.classList.remove('active')
+	// lockBody.classList.remove('_lock')
+}
+function closeBurgerMenu(t) {
+	setTimeout(() => {
+		removeMenu()
+		setTimeout(() => {
+			removeMenu()
+			setTimeout(() => {
+				removeMenu()
+
+			}, t - 500);
+		}, t - 500);
+	}, t);
+
+	burgerMenuActive.classList.remove('active')
+	welcomeOverlay.classList.remove('active')
+	lockBody.classList.remove('_lock')
+}
+for (let link of navMenuLink) {
+	link.onclick = function () { closeBurgerMenu(0) }
+}
+welcomeOverlay.onclick = function () {
+	getMenu(1000)
+}
+contentDocument.onclick = function () {
+	getMenu(1000)
+}
+burgerMenuWrap.onclick = function () {
+	getMenu(1000)
+}
 // Section Welcome
 
 let itemsWelcome = document.querySelectorAll('.welcome-carousel-item')
@@ -234,32 +306,228 @@ let exploreSlider = document.querySelector('#explore-slider')
 exploreSwipedetect(exploreSlider)
 
 // Section Video
+// video-player
 
-let videoProgress = document.querySelector('.video-progress');
-let volumeProgress = document.querySelector('.volume-progress');
 
-videoProgress.addEventListener('input', function () {
-	const value = this.value;
-	this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
-	localStorage.setItem('video-progress', this.style.background)
-	localStorage.setItem('video-value', value)
-})
-volumeProgress.addEventListener('input', function () {
-	const value = this.value;
-	this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
-	localStorage.setItem('volume-progress', this.style.background)
-	localStorage.setItem('volume-value', value)
-})
+function showMeVideo() {
+	let videoProgress = document.querySelector('.video-progress');
+	let volumeProgress = document.querySelector('.volume-progress');
 
-// Save settings
-if (localStorage.getItem('video-progress')) {
-	videoProgress.style.background = localStorage.getItem('video-progress')
-	videoProgress.value = localStorage.getItem('video-value')
+	videoProgress.addEventListener('input', function () {
+		console.log(this)
+		const value = this.value;
+		this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
+		// localStorage.setItem('video-progress', this.style.background)
+		// localStorage.setItem('video-value', value)
+	})
+	volumeProgress.addEventListener('input', function () {
+		const value = this.value;
+		this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`
+		// localStorage.setItem('volume-progress', this.style.background)
+		// localStorage.setItem('volume-value', value)
+
+		video.volume = value / 100
+		if (!video.volume && !videoVolume.classList.contains('toggle')) {
+			videoVolume.classList.add('toggle')
+		} else if (video.volume && videoVolume.classList.contains('toggle')) {
+			videoVolume.classList.remove('toggle')
+			if (video.muted) video.muted = false
+		}
+	})
+
+
+
+	const player = document.querySelector('.player')
+	const video = player.querySelector('.video-item.active')
+
+	const videoPlayFrame = player.querySelector('#video-play-big')
+	const videoPlay = player.querySelector('#video-play-mini')
+	const videoVolume = player.querySelector('#video-volume')
+	const videoFullscreen = player.querySelector('#video-fullscreen')
+	const videoPanel = player.querySelector('.video-panel')
+	const videoPanelProgress = player.querySelector('.video-panel__progress.-video')
+	const volumePanelProgress = player.querySelector('.volume-progress.__audio')
+	const videoInfoTop = player.querySelector('.video-info-top')
+	const videoLow = player.querySelector('.video-info-left')
+	const videoFast = player.querySelector('.video-info-right')
+
+
+
+	function checkPressSpace(e) {
+
+	}
+	window.onkeydown = function (e) {
+		e.preventDefault()
+		if (e.keyCode === 32) {
+			togglePlay()
+		}
+		if (e.keyCode === 77) {
+			mutedVideo()
+		}
+		if (e.keyCode === 70) {
+			showFullscreenMode()
+		}
+
+	}
+	video.ondubbleclick = function () {
+		console.log(1)
+	}
+
+
+	function runOnKeys(func, ...codes) {
+		let pressed = new Set();
+
+		document.addEventListener('keydown', function (e) {
+			pressed.add(e.keyCode);
+
+			for (let code of codes) { // все ли клавиши из набора нажаты?
+				if (!pressed.has(code)) {
+					return;
+				}
+			}
+			pressed.clear();
+			func();
+		});
+		document.addEventListener('keyup', function (e) {
+			pressed.delete(e.keyCode);
+		});
+	}
+	runOnKeys(
+		function () {
+			if (video.playbackRate !== 2) {
+				video.playbackRate += 0.25
+				videoInfoTop.textContent = `x${video.playbackRate}`
+			}
+			videoInfoTop.style.opacity = 1
+			videoFast.style.opacity = 1
+			setTimeout(() => {
+				videoInfoTop.style.opacity = 0
+				videoFast.style.opacity = 0
+			}, 700);
+
+		},
+		16,
+		190
+	);
+	runOnKeys(
+		function () {
+			if (video.playbackRate !== 0.25) {
+				video.playbackRate -= 0.25
+				videoInfoTop.textContent = `x${video.playbackRate}`
+			}
+			videoInfoTop.style.opacity = 1
+			videoLow.style.opacity = 1
+			setTimeout(() => {
+				videoInfoTop.style.opacity = 0
+				videoLow.style.opacity = 0
+			}, 700);
+
+		},
+		16,
+		188
+	);
+
+	// videoPlay.addEventListener('keydown', function (e) {
+
+	// })
+
+	function togglePlay() {
+		const method = video.paused ? 'play' : 'pause'
+		video[method]()
+
+	}
+
+	function handleRangeUpdate() {
+		video.currentTime = this.value / 100 * video.duration
+	}
+	function handleProgress() {
+
+		let percent = (video.currentTime / video.duration) * 100
+		videoProgress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${percent}%, #c4c4c4 ${percent}%, #c4c4c4 100%)`
+		if (percent <= 30) {
+			videoProgress.value = percent - 0.5
+		} else if (percent > 30 && percent <= 70) {
+			videoProgress.value = percent
+		} else if (percent > 70 && percent <= 90) {
+			videoProgress.value = percent + 0.5
+		} else {
+			videoProgress.value = percent + 0.8
+		}
+
+	}
+	function showFullscreenMode() {
+		if (document.fullscreenEnabled) {
+
+			videoFullscreen.classList.toggle('toggle')
+			videoPanel.classList.toggle('fullscreen')
+			videoPanelProgress.classList.toggle('fullscreen')
+			volumePanelProgress.classList.toggle('fullscreen')
+			video.classList.toggle('fullscreen')
+
+			if (!document.fullscreenElement) {
+				player.requestFullscreen()
+			} else {
+				document.exitFullscreen()
+			}
+		}
+
+	}
+	function mutedVideo() {
+		videoVolume.classList.toggle('toggle')
+		video.muted = video.muted ? false : true
+	}
+	function togglePlayOrStop() {
+		videoPlayFrame.classList.toggle('toggle')
+		videoPlay.classList.toggle('toggle')
+		if (video.ended) {
+			video.currentTime = 0
+		}
+	}
+	video.addEventListener('click', togglePlay)
+	videoPlayFrame.addEventListener('click', togglePlay)
+	videoPlay.addEventListener('click', togglePlay)
+	video.addEventListener('pause', togglePlayOrStop)
+	video.addEventListener('play', togglePlayOrStop)
+	videoVolume.addEventListener('click', mutedVideo)
+	videoFullscreen.addEventListener('click', showFullscreenMode)
+
+	video.addEventListener('timeupdate', handleProgress)
+
+	function removeMousemoveRanges() {
+		videoProgress.removeEventListener('mousemove', handleRangeUpdate)
+		videoProgress.addEventListener('change', handleRangeUpdate)
+	}
+	function addMousemoveRanges() {
+		videoProgress.addEventListener('mousemove', handleRangeUpdate)
+
+	}
+	videoProgress.addEventListener('mousedown', addMousemoveRanges)
+	videoProgress.addEventListener('mouseup', removeMousemoveRanges)
+
+	// Save settings
+	// if (localStorage.getItem('video-progress')) {
+	// 	videoProgress.style.background = localStorage.getItem('video-progress')
+	// 	videoProgress.value = localStorage.getItem('video-value')
+	// }
+	// if (localStorage.getItem('volume-progress')) {
+	// 	volumeProgress.style.background = localStorage.getItem('volume-progress')
+	// 	volumeProgress.value = localStorage.getItem('volume-value')
+	// }
 }
-if (localStorage.getItem('volume-progress')) {
-	volumeProgress.style.background = localStorage.getItem('volume-progress')
-	volumeProgress.value = localStorage.getItem('volume-value')
-}
+showMeVideo()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Section Gallery
 let galleryItems
@@ -467,78 +735,7 @@ function getTickets() {
 
 getTickets()
 
-// Burger-menu
-const burgerMenuWrap = document.querySelector('.header__burger')
-const navMenuLink = document.querySelectorAll('.nav-menu__link')
-const contentDocument = document.querySelectorAll('.content._container')
-const welcomeOverlay = document.querySelector('.welcome__overlay')
 
-const burgerMenu = document.querySelector('.header__burger-menu')
-const burgerMenuActive = document.querySelector('.header__burger-menu__active')
-const headerNav = document.querySelector('.header-nav')
-const sectionTitle = document.querySelector('.section-title')
-const sectionSubTittle = document.querySelector('.section-subtittle')
-const welcomeLink = document.querySelector('.welcome-link')
-
-function getMenu(t) {
-	if (burgerMenuActive.classList[1] !== 'active') {
-		showBurgerMenu(t)
-	} else {
-		closeBurgerMenu(t)
-	}
-}
-
-function showBurgerMenu(t) {
-	setTimeout(() => {
-		burgerMenuActive.classList.add('active')
-	}, t);
-	burgerMenu.classList.add('active')
-	headerNav.classList.add('active')
-	sectionTitle.classList.add('active')
-	sectionSubTittle.classList.add('active')
-	welcomeLink.classList.add('active')
-	welcomeOverlay.classList.add('active')
-	// lockBody.classList.add('_lock')
-
-}
-function removeMenu() {
-	burgerMenu.classList.remove('active')
-	headerNav.classList.remove('active')
-	sectionTitle.classList.remove('active')
-	sectionSubTittle.classList.remove('active')
-	welcomeLink.classList.remove('active')
-	burgerMenuActive.classList.remove('active')
-	welcomeOverlay.classList.remove('active')
-	// lockBody.classList.remove('_lock')
-}
-function closeBurgerMenu(t) {
-	setTimeout(() => {
-		removeMenu()
-		setTimeout(() => {
-			removeMenu()
-			setTimeout(() => {
-				removeMenu()
-
-			}, t - 500);
-		}, t - 500);
-	}, t);
-
-	burgerMenuActive.classList.remove('active')
-	welcomeOverlay.classList.remove('active')
-	lockBody.classList.remove('_lock')
-}
-for (let link of navMenuLink) {
-	link.onclick = function () { closeBurgerMenu(0) }
-}
-welcomeOverlay.onclick = function () {
-	getMenu(1000)
-}
-contentDocument.onclick = function () {
-	getMenu(1000)
-}
-burgerMenuWrap.onclick = function () {
-	getMenu(1000)
-}
 // Reload-video
 
 // let iframeVideo = document.querySelectorAll('.video-iframe')
@@ -603,7 +800,7 @@ const marker5 = new mapboxgl.Marker({
 }).setLngLat([2.33645, 48.86252])
 	.addTo(map)
 //
-console.group('%cCross-check: Museum-adaptive, ConstantineTU', 'color: red')
+console.group('%cCross-check: Museum-DOM, ConstantineTU', 'color: red')
 console.log('%cНе выполненные пункты: много пунктов не выполнено', 'color: green')
 console.log(
 	`Score ??? / 150

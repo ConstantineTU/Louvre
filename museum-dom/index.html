@@ -283,36 +283,57 @@
 									masterpieces such as Mona Lisa or Hammurabi's Code</p>
 							</div>
 						</div>
-						<div class="video-player__wrap">
+						<div class="video-player__wrap player">
 							<div class="video-img">
-								<picture>
+								<div class="video-info-top ">1x</div>
+								<div class="video-info-left "></div>
+								<div class="video-info-right "></div>
+								<div class="video__content">
+									<video class="video-item active" src="assets/videos/video0.mp4"
+										poster="assets/img/video/poster0.webp"></video>
+									<video class="video-item" src="assets/videos/video1.mp4"
+										poster="assets/img/video/poster3.webp"></video>
+									<video class="video-item" src="assets/videos/video2.mp4"
+										poster="assets/img/video/poster1.webp"></video>
+									<video class="video-item" src="assets/videos/video3.mp4"
+										poster="assets/img/video/poster2.webp"></video>
+									<video class="video-item" src="assets/videos/video4.mp4"
+										poster="assets/img/video/poster4.webp"></video>
+								</div>
+								<!-- <picture>
 									<source srcset="assets/img/video/Rectangle.webp" type="image/webp">
 									<img src="assets/img/video/Rectangle.jpg" alt="Video image">
 								</picture>
 								<picture>
 									<source class="-img-md1" srcset="assets/img/video/md1/Rectangle.webp" type="image/webp">
 									<img class="-img-md1" src="assets/img/video/md1/Rectangle.jpg" alt="Video image">
-								</picture>
+								</picture> -->
 								<div class="video-img__frame">
-									<button class="video__button-frame -btn-1" type="button"></button>
+									<button id="video-play-big" class="video__button-frame -btn-1" type="button"></button>
 								</div>
 							</div>
 							<div class="video-panel">
 								<div class="video-panel__playstop frame">
-									<button class="video__button-frame -btn-2" type="button"></button>
+									<button id="video-play-mini" class="video__button-frame -btn-2" type="button"></button>
 								</div>
 								<div class="video-panel__progress -video">
-									<input type="range" value="54" min="0" max="100" step="1" class="video-progress">
+
+									<input type="range" value="54" min="0" max="100" step="1" class="video-progress"
+										name="playbackRate">
+
 								</div>
 								<div class="video-panel__volume frame">
-									<button class="video__button-frame -btn-3" type="button">
+									<button id="video-volume" class="video__button-frame -btn-3" type="button">
 									</button>
 								</div>
 								<div class="video-panel__progress -audio">
-									<input type="range" value="43" min="0" max="100" step="1" class="volume-progress __audio">
+
+									<input type="range" value="43" min="0" max="100" step="1" class="volume-progress __audio"
+										name="volume">
+
 								</div>
 								<div class="video-panel__size frame">
-									<button class="video__button-frame -btn-4" type="button">
+									<button id="video-fullscreen" class="video__button-frame -btn-4" type="button">
 									</button>
 								</div>
 							</div>
