@@ -925,11 +925,16 @@ function getTickets() {
 	let formOverviewTicket = document.querySelector('.form-overview-ticket')
 	let formOverviewTime = document.querySelector('.form-overview-time')
 	let formOverviewDate = document.querySelector('.form-overview-date')
+	let formOverviewBasicCount = document.querySelector('.form-overview-basic-count')
+	let formOverviewBasicCalc = document.querySelector('.form-overview-basic-calc-1')
+	let formOverviewSeniorCount = document.querySelector('.form-overview-senior-count')
+	let formOverviewSeniorCalc = document.querySelector('.form-overview-senior-calc-2')
 	let ticketTypeArchivForm = 20
 	let saveForm = false
 	// ?
 	let ticketTypeArchiv = 20
 	let save = false
+
 
 	formTime.addEventListener('change', changeFormTime)
 	function changeFormTime(formTime) {
@@ -965,6 +970,7 @@ function getTickets() {
 		if (basicTicket.value > 0) {
 			basicTicketForm.value--
 			basicTicket.value--
+
 			localStorage.setItem('basicTickets', basicTicket.value)
 		}
 		calcTicketsSum(ticketTypeArchiv)
@@ -1030,6 +1036,11 @@ function getTickets() {
 		seniorTicket.value = localStorage.getItem('seniorTickets')
 		basicTicket.textContent = localStorage.getItem('basicTickets')
 		seniorTicket.textContent = localStorage.getItem('seniorTickets')
+		formOverviewBasicCalc.textContent = localStorage.getItem('formOverviewBasicCalc')
+		formOverviewSeniorCalc.textContent = localStorage.getItem('formOverviewSeniorCalc')
+		formOverviewBasicCount.textContent = localStorage.getItem('basicTickets')
+		formOverviewSeniorCount.textContent = localStorage.getItem('seniorTickets')
+		localStorage.getItem('formOverviewSeniorCalc')
 		if (localStorage.getItem('formOverviewTime')) {
 			formOverviewTime.textContent = localStorage.getItem('formOverviewTime')
 		}
@@ -1065,10 +1076,16 @@ function getTickets() {
 		}
 
 	} else {
-		basicTicket.textContent = 1
-		seniorTicket.textContent = 1
+		basicTicketForm.textContent = 1
+		seniorTicketForm.textContent = 1
 		seniorTicketForm.value = 1
 		basicTicketForm.value = 1
+		basicTicket.textContent = 1
+		seniorTicket.textContent = 1
+		seniorTicket.value = 1
+		basicTicket.value = 1
+		formOverviewBasicCount.textContent = 1
+		formOverviewSeniorCount.textContent = 1
 	}
 	ticketsTypeForm.addEventListener('change', setTicketTypeForm)
 	numberMinusBasicForm.addEventListener('click', function () {
@@ -1105,9 +1122,7 @@ function getTickets() {
 		calcTicketsSumForm(ticketTypeArchivForm)
 	})
 
-	function miniCalcForm() {
 
-	}
 	function setTicketTypeForm(ticketsTypeForm) {
 		ticketTypeArchivForm = ticketsTypeForm.target.value
 		localStorage.setItem('ticketTypeIdForm', ticketsTypeForm.target.value)
@@ -1135,6 +1150,13 @@ function getTickets() {
 		ticketsSumEvroForm.textContent = sumForm
 		ticketsSumEvro.textContent = sumForm
 		saveForm = true
+		formOverviewBasicCount.textContent = basicTicket.value
+		formOverviewBasicCalc.textContent = basicTicket.value * ticketTypeArchivForm
+		formOverviewSeniorCount.textContent = seniorTicket.value
+		formOverviewSeniorCalc.textContent = (seniorTicket.value * ticketTypeArchivForm) / 2
+
+		localStorage.setItem('formOverviewBasicCalc', formOverviewBasicCalc.textContent)
+		localStorage.setItem('formOverviewSeniorCalc', formOverviewSeniorCalc.textContent)
 		localStorage.setItem('saveForm', saveForm)
 		localStorage.setItem('ticketsSumEvroForm', ticketsSumEvroForm.textContent)
 		localStorage.setItem('ticketTypeArchivForm', ticketTypeArchivForm)
@@ -1157,6 +1179,13 @@ function getTickets() {
 		ticketsSumEvroForm.textContent = sum
 
 		save = true
+		formOverviewBasicCount.textContent = basicTicket.value
+		formOverviewBasicCalc.textContent = basicTicket.value * ticketTypeArchiv
+		formOverviewSeniorCount.textContent = seniorTicket.value
+		formOverviewSeniorCalc.textContent = (seniorTicket.value * ticketTypeArchiv) / 2
+
+		localStorage.setItem('formOverviewBasicCalc', formOverviewBasicCalc.textContent)
+		localStorage.setItem('formOverviewSeniorCalc', formOverviewSeniorCalc.textContent)
 		localStorage.setItem('save', save)
 		localStorage.setItem('ticketsSumEvro', ticketsSumEvro.textContent)
 		localStorage.setItem('ticketTypeArchiv', ticketTypeArchiv)
@@ -1241,7 +1270,7 @@ console.log(
 	`Score ??? / 150
 
 	Выполненные пункты:
-	 С вашего позволения, прошу вас отложить проверку до завтра, если это возможно, завтра я вас приятно удивлю`
+	 С вашего позволения, прошу вас отложить проверку, если это возможно, я вас приятно удивлю`
 )
 console.log('	%cИтого ??? баллов из 160', 'color: green')
 
