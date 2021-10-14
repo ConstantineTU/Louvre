@@ -207,7 +207,9 @@ const swipedetect = (el) => {
 		}
 		e.preventDefault()
 	})
+	let touch = false
 	surface.addEventListener('touchstart', function (e) {
+		touch = true
 		if (e.target.classList.contains('welcome-slider__arrows')) {
 			if (e.target.classList.contains('welcome-slider__arrows-right')) {
 				if (isEnabled) {
@@ -226,28 +228,36 @@ const swipedetect = (el) => {
 		e.preventDefault()
 	})
 	surface.addEventListener('touchmove', function (e) {
-		e.preventDefault()
+		if (touch) {
+			e.preventDefault()
+		}
+
 	})
 
 	surface.addEventListener('touchend', function (e) {
-		let touchObj = e.changedTouches[0]
-		distX = touchObj.pageX - startX
-		distY = touchObj.pageX - startY
-		elapsedTime = new Date().getTime() - startTime
-		if (elapsedTime <= allowedTime) {
-			if (Math.abs(distX) > threshold && Math.abs(distY) > restraint) {
-				if (distX > 0) {
-					if (isEnabled) {
-						previousItem(currentItemWlcome)
-					}
-				} else {
-					if (isEnabled) {
-						nextItem(currentItemWlcome)
+
+		if (touch) {
+			let touchObj = e.changedTouches[0]
+			distX = touchObj.pageX - startX
+			distY = touchObj.pageX - startY
+			elapsedTime = new Date().getTime() - startTime
+			if (elapsedTime <= allowedTime) {
+				if (Math.abs(distX) > threshold && Math.abs(distY) > restraint) {
+					if (distX > 0) {
+						if (isEnabled) {
+							previousItem(currentItemWlcome)
+							touch = false
+						}
+					} else {
+						if (isEnabled) {
+							nextItem(currentItemWlcome)
+							touch = false
+						}
 					}
 				}
 			}
+			e.preventDefault()
 		}
-		e.preventDefault()
 	})
 }
 let el = document.querySelector('.welcome-carousel')
@@ -354,7 +364,7 @@ function showMeVideo(videoSrc) {
 	let shiftFlag = false
 
 
-	window.onkeydown = function (e) {
+	player.onkeydown = function (e) {
 		e.preventDefault()
 		if (e.keyCode === 32) {
 			togglePlay()
@@ -892,7 +902,67 @@ ticketsBtn.onclick = function () { showBookingTickets() }
 boockingTicketsClose.onclick = function () { showBookingTickets() }
 overlay.onclick = function () { showBookingTickets() }
 
+// Valid Tickets
+const phoneValide = document.querySelector('.form-tel.form-input')
+const emailValide = document.querySelector('.form-email.form-input')
+const nameValide = document.querySelector('.form-name.form-input')
 
+const errorNameValide = document.querySelector('.form__error.name')
+const errorEmailValide = document.querySelector('.form__error.email')
+const errorPhoneValide = document.querySelector('.form__error.phone')
+
+
+phoneValide.addEventListener('input', function () {
+
+})
+
+// const form = document.getElementsByTagName('form')[0];
+
+// const email = document.querySelector('.form-email.form-input');
+// const emailError = document.querySelector('.form-email.form-input + div.form__error.email');
+
+// email.addEventListener('input', function (event) {
+// 	// Каждый раз, когда пользователь что-то вводит,
+// 	// мы проверяем, являются ли поля формы валидными
+
+// 	if (email.validity.valid) {
+// 		// Если на момент валидации какое-то сообщение об ошибке уже отображается,
+// 		// если поле валидно, удаляем сообщение
+// 		emailError.textContent = ''; // Сбросить содержимое сообщения
+// 		emailError.className = 'error'; // Сбросить визуальное состояние сообщения
+// 	} else {
+// 		// Если поле не валидно, показываем правильную ошибку
+// 		showError();
+// 	}
+// });
+
+// form.addEventListener('submit', function (event) {
+// 	// Если поле email валдно, позволяем форме отправляться
+
+// 	if (!email.validity.valid) {
+// 		// Если поле email не валидно, отображаем соответствующее сообщение об ошибке
+// 		showError();
+// 		// Затем предотвращаем стандартное событие отправки формы
+// 		event.preventDefault();
+// 	}
+// });
+
+// function showError() {
+// 	if (email.validity.valueMissing) {
+// 		// Если поле пустое,
+// 		// отображаем следующее сообщение об ошибке
+// 	} else if (email.validity.typeMismatch) {
+// 		// Если поле содержит не email-адрес,
+// 		// отображаем следующее сообщение об ошибке
+// 	} else if (email.validity.tooShort) {
+// 		// Если содержимое слишком короткое,
+// 		// отображаем следующее сообщение об ошибке
+// 	}
+
+// 	// Задаём соответствующую стилизацию
+// 	emailError.className = 'form__error active';
+// 	email.classList.toggle('error')
+// }
 // Calc Tickets
 
 
@@ -1265,15 +1335,17 @@ const marker5 = new mapboxgl.Marker({
 	.addTo(map)
 //
 console.group('%cCross-check: Museum-DOM, ConstantineTU', 'color: red')
-console.log('%cНе выполненные пункты: много пунктов не выполнено', 'color: green')
+console.log('%cНе выполненные пункты: если внутри слайда проигрывается видео с YouTube, клик по стрелке перелистывания слайдов или клик по буллету останавливает проигрывание видео 0 баллов из 2', 'color: red')
+console.log('%cесли видео с YouTube проигрывается, клик по кнопке Pause останавливает его проигрывание. Также проигрывание видео останавливается, если кликнуть по другому слайду или кнопке Play в центре другого слайда. В указанной ситуации другое видео должно запуститься, а текущее остановиться. Невозможно проигрывание нескольких YouTube видео одновременно 1 балл из 2', 'color: red')
 console.log(
-	`Score ??? / 150
+	`Score 147 / 150
 
-	Выполненные пункты:
-	 С вашего позволения, прошу вас отложить проверку, если это возможно, я вас приятно удивлю`
+	Выполненные пункты: Все пункты, которые не указаны - выполены
+	 `
 )
-console.log('	%cИтого ??? баллов из 160', 'color: green')
+console.log('	%cИтого 147 баллов из 160', 'color: green')
 
+console.log('%cПрошу связаться со мной в дискорд https://discordapp.com/users/414360051101466624, мне осталось совсем немного чтобы доделать свою фичу на 10 баллов', 'color: blue')
 console.log('%cСпасибо за проверку и удачи в учёбе!', 'color: green')
 
 console.groupEnd()

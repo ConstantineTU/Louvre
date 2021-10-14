@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
   --bg-dark: #030303;
   --dark-red: #710707;
@@ -749,6 +751,9 @@ footer {
   background-color: transparent;
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .welcome__overlay.active {
@@ -2256,6 +2261,11 @@ input::-webkit-inner-spin-button {
   background: var(--dark-red);
 }
 
+.form {
+  /* Это стили для не валидных полей */
+  /* Это стили для кастомных сообщений об ошибке */
+}
+
 .form__inputs-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2437,12 +2447,51 @@ input::-webkit-inner-spin-button {
   background: url("../assets/img/icons/tickets/booking/name.svg") 14px 50% no-repeat;
 }
 
+.form-name:focus:invalid ~ .form__error.name {
+  display: block;
+}
+
 .form-email {
   background: url("../assets/img/icons/tickets/booking/email.svg") 14px 50% no-repeat;
 }
 
+.form-email:focus:invalid ~ .form__error.email {
+  display: block;
+}
+
 .form-tel {
   background: url("../assets/img/icons/tickets/booking/tel.svg") 14px 50% no-repeat;
+}
+
+.form-tel:focus:invalid ~ .form__error.phone {
+  display: block;
+}
+
+.form__error {
+  display: none;
+  font-size: 12px;
+  background-color: #900;
+  color: white;
+  padding: 1px 0px 0px 0px;
+  margin: 0px 0px 1px 0px;
+  line-height: 12px;
+}
+
+.form__error.active {
+  display: block;
+}
+
+.form .form__error.active {
+  padding: 0.3em;
+}
+
+.form-name:focus:invalid,
+.form-email:focus:invalid,
+.form-tel:focus:invalid {
+  outline: none;
+  border-color: #900;
+  background-color: #fdd;
+  margin: 0px 0px 2px 0px;
 }
 
 .form-select {

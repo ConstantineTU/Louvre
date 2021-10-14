@@ -618,11 +618,22 @@
 														</div>
 													</div>
 													<input class="form-name form-input" type="text" name="formName" id="formName"
-														placeholder="Name">
+														placeholder="Name" required minlength="3" maxlength="15"
+														pattern="^[\sA-Za-zА-Яа-яЁё]+$">
+													<div class="form__error name">"В качестве символов могут быть использованы буквы
+														английского или русского алфавита в нижнем или верхнем регистре и пробелы."
+													</div>
 													<input class="form-email form-input" type="email" name="formEmail" id="formEmail"
-														placeholder="E-mail">
+														placeholder="E-mail" required minlength="3"
+														pattern="^[a-z0-9._%+-]{3,15}@[a-z]{4,50}\.[a-z]{2,4}$">
+													<div class="form__error email">"Это поле должно содержать емайл адрес в формате
+														username@example.com"
+													</div>
 													<input class="form-tel form-input" type="tel" name="formTel" id="formTel"
-														placeholder="Phone">
+														placeholder="Phone" required maxlength="10" pattern="^[0-9]{10,10}$">
+													<div class="form__error phone">"Это поле должно содержать телефон в формате
+														9998886655"
+													</div>
 													<div class="form-arrow form-select-wrap">
 														<select id="formSelect" name="formSelect" class="form-select form-input"
 															size="1">
@@ -634,7 +645,8 @@
 															</option>
 															<option id="select2" name="temporary" value="25">Temporary exhibition
 															</option>
-															<option id="select3" name="combined" value="40">Combined Admission</option>
+															<option id="select3" name="combined" value="40">Combined Admission
+															</option>
 														</select>
 													</div>
 													<div class="form-footer">
@@ -693,19 +705,19 @@
 												<div class="form-overview-calc">
 													<div class="form-overview-calc__overview">
 														<div class="form-overview-basic__wrap">
-															<div class="form-overview-basic-count">2</div>
+															<div class="form-overview-basic-count">1</div>
 															<p class="form-overview-basic-amount">Basic (20 €)</p>
 														</div>
 														<p class="form-overview-basic-calc"><span
-																class="form-overview-basic-calc-1">40</span> €</p>
+																class="form-overview-basic-calc-1">20</span> €</p>
 													</div>
 													<div class="form-overview-calc__overview">
 														<div class="form-overview-senior__wrap">
-															<div class="form-overview-senior-count">2</div>
+															<div class="form-overview-senior-count">1</div>
 															<p class="form-overview-senior-amount">Senior (10 €)</p>
 														</div>
 														<p class="form-overview-senior-calc">
-															<span class="form-overview-senior-calc-2">20</span> €
+															<span class="form-overview-senior-calc-2">10</span> €
 														</p>
 													</div>
 												</div>
@@ -791,7 +803,7 @@
 													</div>
 												</div>
 												<div class="form-payment-btn__wrap">
-													<button type="button" class="form-payment-btn">Book</button>
+													<button type="submit" class="form-payment-btn">Book</button>
 												</div>
 											</div>
 										</form>
