@@ -1,5 +1,5 @@
 
-// test support webp
+// TODO test support webp
 
 function testWebP(callback) {
 	let webP = new Image();
@@ -19,7 +19,8 @@ testWebP(function (support) {
 		document.querySelector('html').classList.add('_no-webp');
 	}
 });
-// header
+
+// TODO header
 // Burger-menu
 const burgerMenuWrap = document.querySelector('.header__burger')
 const navMenuLink = document.querySelectorAll('.nav-menu__link')
@@ -92,7 +93,8 @@ contentDocument.onclick = function () {
 burgerMenuWrap.onclick = function () {
 	getMenu(1000)
 }
-// Section Welcome
+
+// TODO Section Welcome
 
 let itemsWelcome = document.querySelectorAll('.welcome-carousel-item')
 let sliderItemWelcome = document.querySelectorAll('.welcome-slider__item')
@@ -166,8 +168,6 @@ document.querySelector('.welcome-slider__arrows-right').addEventListener('click'
 })
 
 const swipedetect = (el) => {
-
-
 	let surface = el
 	let startX = 0
 	let startY = 0
@@ -256,7 +256,7 @@ swipedetect(el)
 
 
 
-// Section Explore
+// TODO Section Explore
 
 
 
@@ -312,7 +312,7 @@ exploreSwipedetect(exploreSlider)
 
 
 
-// Section Video
+// TODO Section Video
 // video-player
 
 
@@ -353,10 +353,6 @@ function showMeVideo(videoSrc) {
 	let videoFast = player.querySelector('.video-info-right')
 	let shiftFlag = false
 
-
-	function checkPressShift(e) {
-
-	}
 
 	window.onkeydown = function (e) {
 		e.preventDefault()
@@ -402,19 +398,11 @@ function showMeVideo(videoSrc) {
 		if (e.keyCode === 16) {
 			shiftFlag = false
 			console.log(shiftFlag)
-
 		}
-
 	})
-	video.ondubbleclick = function () {
-		console.log(1)
-	}
-
-
 	function togglePlay() {
 		const method = video.paused ? 'play' : 'pause'
 		video[method]()
-
 	}
 
 	function handleRangeUpdate() {
@@ -496,48 +484,23 @@ showMeVideo(video)
 
 
 
-// Video-slider
+
+
+
+
+// TODO Video-slider
+
+
+
+
 
 let itemsVideo = document.querySelectorAll('.iframe-wrap')
 let itemsVideoContainer = document.querySelector('.video-slider__videos')
-// let sliderItemWelcome = document.querySelectorAll('.welcome-slider__item')
+
 let currentItemVideo = 0
 let isEnabledVideo = true
 let currentVideoContainer = -1485
 itemsVideoContainer.style.left = `${currentVideoContainer}px`
-
-
-
-
-// document.querySelector('.video-slider__arrow-left').addEventListener('click', function () {
-
-// })
-
-// document.querySelector('.video-slider__arrow-right').addEventListener('click', function () {
-
-// 	// window.onhashchange = function () {
-// 	// 	if (window.innerDocClick) {
-// 	// 		window.innerDocClick = false;
-// 	// 	} else {
-// 	// 		if (window.location.hash != '#undefined') {
-// 	// 			goBack();
-// 	// 		} else {
-// 	// 			history.pushState("", document.title, window.location.pathname);
-// 	// 			location.reload();
-// 	// 		}
-// 	// 	}
-// 	// }
-// })
-
-
-
-
-
-
-
-
-
-
 let itemsVideoMain = document.querySelectorAll('.video-item')
 let sliderItemVideoMain = document.querySelectorAll('.video-slider__item')
 let currentItemVideoMain = 0
@@ -675,7 +638,6 @@ sliderItemVideoMain.forEach(slide => (slide.addEventListener('click', function (
 				setTimeout(() => {
 					normalizeProgressVideoTIme()
 				}, 0);
-
 			}, 100);
 		}
 
@@ -716,12 +678,6 @@ function showItemVideoMain(direction) {
 		this.classList.remove('next', direction)
 		this.classList.add('active')
 		isEnabledVideoMain = true
-
-		// video.load()
-		// video = document.querySelector('.video-item.active')
-		// video.load()
-		// showMeVideo(video)
-		// video.load()
 	})
 }
 function previousItemVideoMain(n) {
@@ -789,133 +745,7 @@ document.querySelector('.video-slider__arrow-right').addEventListener('click', f
 
 
 
-
-
-
-
-
-
-// IFRAME RELOAD
-// let videosIframe = document.querySelectorAll('.video-iframe')
-// let arrIframesLoading = []
-// videosIframe.forEach(videoIframe => (videoIframe.addEventListener('load', function () {
-// 	console.log('Ya IFRAME')
-// 	arrIframesLoading.push(this)
-// 	console.log(arrIframesLoading)
-
-// 	for (let ifr of videosIframe) {
-// 	}
-// })))
-// arrIframesLoading = []
-// console.log(arrIframesLoading)
-// let players = document.querySelectorAll('.html5-video-player')
-// players.stopVideo()
-
-
-
-
-
-// sliderItemWelcome.forEach(slide => (slide.addEventListener('click', function () {
-// 	if (isEnabled) {
-// 		if (slide.value > currentItemWlcome) {
-// 			hideItem('to-left')
-// 			changeCurrentItem(slide.value)
-// 			showItem('from-right')
-// 		} else if (slide.value < currentItemWlcome) {
-// 			hideItem('to-right')
-// 			changeCurrentItem(slide.value)
-// 			showItem('from-left')
-// 		}
-// 	}
-// })))
-
-// function changeCurrentItemVideo(n) {
-// 	// for (let bullet of sliderItemWelcome) {
-// 	// 	bullet.classList.remove('active')
-// 	// }
-// 	currentItemVideo = (n + itemsWelcome.length) % itemsWelcome.length
-// 	// sliderItemWelcome[currentItemVideo].classList.add('active')
-// }
-
-// function hideItemVideo(direction) {
-// 	isEnabledVideo = false
-// 	itemsVideoContainer.classList.add(direction)
-// 	itemsVideo[currentItemVideo].classList.add(direction)
-// 	itemsVideoContainer.addEventListener('animationend', function () {
-// 		itemsVideoContainer.classList.remove('active', direction)
-// 		itemsVideo[currentItemVideo + 1].classList.remove('active', direction)
-// 	})
-// }
-
-// function showItemVideo(direction) {
-// 	itemsVideoContainer.classList.add('next', direction)
-// 	itemsVideo[currentItemVideo].classList.add('next', direction)
-// 	itemsVideoContainer.addEventListener('animationend', function () {
-// 		itemsVideoContainer.classList.remove('next', direction)
-// 		itemsVideo[currentItemVideo].classList.remove('next', direction)
-// 		itemsVideo[currentItemVideo].classList.add('active')
-// 		isEnabledVideo = true
-// 	})
-// }
-
-// function previousItemVideo(n) {
-// 	hideItemVideo('to-right')
-// 	changeCurrentItemVideo(n - 1)
-// 	showItemVideo('from-left')
-// }
-// function nextItemVideo(n) {
-// 	hideItemVideo('to-left')
-// 	changeCurrentItemVideo(n + 1)
-// 	showItemVideo('from-right')
-// }
-
-
-
-// const swipedetect = (el) => {
-
-
-// 	let surface = el
-// 	let startX = 0
-// 	let startY = 0
-// 	let distX = 0
-// 	let distY = 0
-
-// 	let startTime = 0
-// 	let elapsedTime = 0
-
-// 	let threshold = 100
-// 	let restraint = 100
-// 	let allowedTime = 400
-
-// 	surface.addEventListener('mousedown', function (e) {
-// 		startX = e.pageX
-// 		startY = e.pageY
-// 		startTime = new Date().getTime()
-// 		e.preventDefault()
-// 	})
-
-// 	surface.addEventListener('mouseup', function (e) {
-// 		distX = e.pageX - startX
-// 		distY = e.pageX - startY
-// 		elapsedTime = new Date().getTime() - startTime
-// 		if (elapsedTime <= allowedTime) {
-// 			if (Math.abs(distX) > threshold && Math.abs(distY) > restraint) {
-// 				if (distX > 0) {
-// 					if (isEnabled) {
-// 						previousItem(currentItemWlcome)
-// 					}
-// 				} else {
-// 					if (isEnabled) {
-// 						nextItem(currentItemWlcome)
-// 					}
-// 				}
-// 			}
-// 		}
-// 		e.preventDefault()
-// 	})
-// }
-// let el = document.querySelector('.welcome-carousel')
-// swipedetect(el)
+// TODO Section Gallery
 
 
 
@@ -925,8 +755,6 @@ document.querySelector('.video-slider__arrow-right').addEventListener('click', f
 
 
 
-
-// Section Gallery
 let galleryItems
 let galleryTransform = function (sup) {
 	const pictureInnerContainer = document.querySelector('.gallery_inner-items');
@@ -1034,7 +862,11 @@ function checkGalleryItem() {
 }
 
 function getScroll() { window.addEventListener('scroll', debounce(checkGalleryItem)) }
-// Button tickets
+
+
+// TODO Section Tickets
+
+
 
 const ticketsBtn = document.querySelector('.tickets-btn')
 const boockingTicketsContainer = document.querySelector('.boocking-tickets__container')
@@ -1059,11 +891,14 @@ function showBookingTickets() {
 ticketsBtn.onclick = function () { showBookingTickets() }
 boockingTicketsClose.onclick = function () { showBookingTickets() }
 overlay.onclick = function () { showBookingTickets() }
+
+
 // Calc Tickets
 
 
 
 function getTickets() {
+	// ?
 	const ticketsType = document.querySelectorAll('.tickets-radio__input[name="ticketsType"]')
 	const numberMinusBasic = document.querySelector('.number-minus.basic')
 	const numberPlusBasic = document.querySelector('.number-plus.basic')
@@ -1071,42 +906,93 @@ function getTickets() {
 	const numberPlusSenior = document.querySelector('.number-plus.senior')
 
 	const ticketsSumEvro = document.querySelector('.tickets-evro')
-	const seniorTicket = document.querySelector('#senior65')
-	const basicTicket = document.querySelector('#basic18')
+	const seniorTicket = document.getElementById('senior65')
+	const basicTicket = document.getElementById('basic18')
+
+	// ?
+	let ticketsTypeForm = document.getElementById('formSelect')
+	const numberMinusBasicForm = document.querySelector('.number-minus.basic-form')
+	const numberPlusBasicForm = document.querySelector('.number-plus.basic-form')
+	const numberMinusSeniorForm = document.querySelector('.number-minus.senior-form')
+	const numberPlusSeniorForm = document.querySelector('.number-plus.senior-form')
+
+	const ticketsSumEvroForm = document.getElementById('formTotal')
+	const seniorTicketForm = document.getElementById('senior65Form')
+	const basicTicketForm = document.getElementById('basic18Form')
+	const formTime = document.getElementById('formTime')
+	const formDate = document.getElementById('formDate')
+
+	let formOverviewTicket = document.querySelector('.form-overview-ticket')
+	let formOverviewTime = document.querySelector('.form-overview-time')
+	let formOverviewDate = document.querySelector('.form-overview-date')
+	let ticketTypeArchivForm = 20
+	let saveForm = false
+	// ?
 	let ticketTypeArchiv = 20
 	let save = false
-	if (localStorage.getItem('save')) {
-		ticketsSumEvro.textContent = localStorage.getItem('ticketsSumEvro')
-		ticketTypeArchiv = localStorage.getItem('ticketTypeArchiv')
-		basicTicket.value = localStorage.getItem('basicTickets')
-		seniorTicket.value = localStorage.getItem('seniorTickets')
-		basicTicket.textContent = localStorage.getItem('basicTickets')
-		seniorTicket.textContent = localStorage.getItem('seniorTickets')
-		for (let i of ticketsType) {
-			if (i.id === localStorage.getItem('ticketTypeId')) {
-				i.checked = true
-			}
-		}
+
+	formTime.addEventListener('change', changeFormTime)
+	function changeFormTime(formTime) {
+		formOverviewTime.textContent = formTime.target.value
+		localStorage.setItem('formOverviewTime', formTime.target.value)
 	}
+
+	formDate.addEventListener('change', changeFormDate)
+
+	function changeFormDate(formDate) {
+		let yearForm = formDate.target.value.slice(0, 4)
+		let monthForm = formDate.target.value.slice(5, 7)
+		if (monthForm[0] === '0') {
+			monthForm = monthForm[1]
+		}
+		let dayForm = formDate.target.value.slice(8, 10)
+		if (dayForm[0] === '0') {
+			dayForm = dayForm[1]
+		}
+		let dateTime = new Date(yearForm, (monthForm - 1), dayForm);
+		const options = {
+			month: 'long',
+			day: 'numeric',
+			weekday: 'long',
+		};
+
+		formOverviewDate.textContent = dateTime.toLocaleString("en-US", options)
+		localStorage.setItem('formOverviewDate', dateTime.toLocaleString("en-US", options))
+	}
+
 	ticketsType.forEach(ticketType => (ticketType.addEventListener('change', setTicketType)))
 	numberMinusBasic.addEventListener('click', function () {
-		if (basicTicket.value > 0) basicTicket.value--
-		localStorage.setItem('basicTickets', basicTicket.value)
+		if (basicTicket.value > 0) {
+			basicTicketForm.value--
+			basicTicket.value--
+			localStorage.setItem('basicTickets', basicTicket.value)
+		}
 		calcTicketsSum(ticketTypeArchiv)
 	})
+
 	numberPlusBasic.addEventListener('click', function () {
-		if (basicTicket.value < 20) basicTicket.value++
-		localStorage.setItem('basicTickets', basicTicket.value)
+		if (basicTicket.value < 20) {
+			basicTicketForm.value++
+			basicTicket.value++
+			localStorage.setItem('basicTickets', basicTicket.value)
+		}
 		calcTicketsSum(ticketTypeArchiv)
 	})
 	numberMinusSenior.addEventListener('click', function () {
-		if (seniorTicket.value > 0) seniorTicket.value--
-		localStorage.setItem('seniorTickets', seniorTicket.value)
+		if (seniorTicket.value > 0) {
+			seniorTicketForm.value--
+			seniorTicket.value--
+			localStorage.setItem('seniorTickets', seniorTicket.value)
+		}
 		calcTicketsSum(ticketTypeArchiv)
 	})
+
 	numberPlusSenior.addEventListener('click', function () {
-		if (seniorTicket.value < 20) seniorTicket.value++
-		localStorage.setItem('seniorTickets', seniorTicket.value)
+		if (seniorTicket.value < 20) {
+			seniorTicketForm.value++
+			seniorTicket.value++
+			localStorage.setItem('seniorTickets', seniorTicket.value)
+		}
 		calcTicketsSum(ticketTypeArchiv)
 	})
 
@@ -1114,22 +1000,174 @@ function getTickets() {
 		ticketTypeArchiv = ticketType.target.value
 		calcTicketsSum(ticketTypeArchiv)
 		localStorage.setItem('ticketTypeId', ticketType.target.id)
+		formOverviewTicket.textContent = ticketType.target.getAttribute('nameforjs')
+		for (let o = 0; o < ticketsTypeForm.length; o++) {
+			if (ticketsTypeForm.options[o].getAttribute('name') === localStorage.getItem('ticketTypeId')) {
+				ticketsTypeForm.options.selectedIndex = o
+			}
+		}
+		localStorage.removeItem('ticketTypeIdForm')
 	}
+
+
+
+
+
+
+
+
+	if (localStorage.getItem('saveForm') || localStorage.getItem('save')) {
+		ticketsSumEvroForm.textContent = localStorage.getItem('ticketsSumEvroForm')
+		ticketTypeArchivForm = localStorage.getItem('ticketTypeArchivForm')
+		basicTicketForm.value = localStorage.getItem('basicTickets')
+		seniorTicketForm.value = localStorage.getItem('seniorTickets')
+		basicTicketForm.textContent = localStorage.getItem('basicTickets')
+		seniorTicketForm.textContent = localStorage.getItem('seniorTickets')
+
+		ticketsSumEvro.textContent = localStorage.getItem('ticketsSumEvroForm')
+		ticketTypeArchiv = localStorage.getItem('ticketTypeArchivForm')
+		basicTicket.value = localStorage.getItem('basicTickets')
+		seniorTicket.value = localStorage.getItem('seniorTickets')
+		basicTicket.textContent = localStorage.getItem('basicTickets')
+		seniorTicket.textContent = localStorage.getItem('seniorTickets')
+		if (localStorage.getItem('formOverviewTime')) {
+			formOverviewTime.textContent = localStorage.getItem('formOverviewTime')
+		}
+		if (localStorage.getItem('formOverviewDate')) {
+			formOverviewDate.textContent = localStorage.getItem('formOverviewDate')
+		}
+		if (localStorage.getItem('ticketTypeId')) {
+			for (let i of ticketsType) {
+				if (i.id === localStorage.getItem('ticketTypeId')) {
+					i.checked = true
+					formOverviewTicket.textContent = i.getAttribute('nameforjs')
+				}
+			}
+			for (let o = 0; o < ticketsTypeForm.length; o++) {
+				if (ticketsTypeForm.options[o].getAttribute('name') === localStorage.getItem('ticketTypeId')) {
+					ticketsTypeForm.options.selectedIndex = o
+				}
+			}
+		} else if (localStorage.getItem('ticketTypeIdForm')) {
+			for (let i of ticketsType) {
+				if (i.value === localStorage.getItem('ticketTypeIdForm')) {
+					console.log(i.value)
+					i.checked = true
+					formOverviewTicket.textContent = i.getAttribute('nameforjs')
+				}
+			}
+			for (let o = 0; o < ticketsTypeForm.length; o++) {
+				if (ticketsTypeForm.options[o].value === localStorage.getItem('ticketTypeIdForm')) {
+					ticketsTypeForm.options.selectedIndex = o
+
+				}
+			}
+		}
+
+	} else {
+		basicTicket.textContent = 1
+		seniorTicket.textContent = 1
+		seniorTicketForm.value = 1
+		basicTicketForm.value = 1
+	}
+	ticketsTypeForm.addEventListener('change', setTicketTypeForm)
+	numberMinusBasicForm.addEventListener('click', function () {
+		if (basicTicketForm.value > 0) {
+			basicTicketForm.value--
+			basicTicket.value--
+			localStorage.setItem('basicTickets', basicTicket.value)
+		}
+		calcTicketsSumForm(ticketTypeArchivForm)
+	})
+	numberPlusBasicForm.addEventListener('click', function () {
+		if (basicTicketForm.value < 20) {
+			basicTicketForm.value++
+			basicTicket.value++
+			localStorage.setItem('basicTickets', basicTicket.value)
+		}
+		calcTicketsSumForm(ticketTypeArchivForm)
+	})
+	numberMinusSeniorForm.addEventListener('click', function () {
+		if (seniorTicketForm.value > 0) {
+			seniorTicketForm.value--
+			seniorTicket.value--
+			localStorage.setItem('seniorTickets', seniorTicket.value)
+		}
+		calcTicketsSumForm(ticketTypeArchivForm)
+
+	})
+	numberPlusSeniorForm.addEventListener('click', function () {
+		if (seniorTicketForm.value < 20) {
+			seniorTicketForm.value++
+			seniorTicket.value++
+			localStorage.setItem('seniorTickets', seniorTicket.value)
+		}
+		calcTicketsSumForm(ticketTypeArchivForm)
+	})
+
+	function miniCalcForm() {
+
+	}
+	function setTicketTypeForm(ticketsTypeForm) {
+		ticketTypeArchivForm = ticketsTypeForm.target.value
+		localStorage.setItem('ticketTypeIdForm', ticketsTypeForm.target.value)
+		calcTicketsSumForm(ticketTypeArchivForm)
+		for (let i of ticketsType) {
+			if (i.value === ticketsTypeForm.target.value) {
+				i.checked = true
+				formOverviewTicket.textContent = i.getAttribute('nameforjs')
+			}
+		}
+		localStorage.removeItem('ticketTypeId')
+	}
+
+
+
+
+
+
+
+
+	function calcTicketsSumForm(ticketTypeArchivForm) {
+
+
+		sumForm = ticketTypeArchivForm * basicTicketForm.value + ticketTypeArchivForm * (seniorTicketForm.value / 2)
+		ticketsSumEvroForm.textContent = sumForm
+		ticketsSumEvro.textContent = sumForm
+		saveForm = true
+		localStorage.setItem('saveForm', saveForm)
+		localStorage.setItem('ticketsSumEvroForm', ticketsSumEvroForm.textContent)
+		localStorage.setItem('ticketTypeArchivForm', ticketTypeArchivForm)
+		localStorage.setItem('seniorTicketsForm', seniorTicketForm.value)
+		localStorage.setItem('seniorTicketsForm', seniorTicketForm.value)
+		localStorage.setItem('basicTicketsForm', basicTicketForm.value)
+		localStorage.setItem('basicTicketsForm', basicTicketForm.value)
+
+	}
+
+
+
+
+
+
+
 	function calcTicketsSum(ticketTypeArchiv) {
-
-
 		sum = ticketTypeArchiv * basicTicket.value + ticketTypeArchiv * (seniorTicket.value / 2)
 		ticketsSumEvro.textContent = sum
+		ticketsSumEvroForm.textContent = sum
+
 		save = true
 		localStorage.setItem('save', save)
 		localStorage.setItem('ticketsSumEvro', ticketsSumEvro.textContent)
 		localStorage.setItem('ticketTypeArchiv', ticketTypeArchiv)
-
-
-
+		localStorage.setItem('ticketsSumEvroForm', ticketsSumEvroForm.textContent)
+		localStorage.setItem('ticketTypeArchivForm', ticketTypeArchivForm)
+		localStorage.setItem('seniorTicketsForm', seniorTicketForm.value)
+		localStorage.setItem('seniorTicketsForm', seniorTicketForm.value)
+		localStorage.setItem('basicTicketsForm', basicTicketForm.value)
+		localStorage.setItem('basicTicketsForm', basicTicketForm.value)
 	}
 }
-
 getTickets()
 
 
