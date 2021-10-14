@@ -359,7 +359,7 @@ function showMeVideo(videoSrc) {
 
 	let player = document.querySelector('.player')
 	let video = videoSrc
-
+	let controlsOverlayVideo = document.querySelector('.controlsOverlay.stackItem')
 	let videoPlayFrame = player.querySelector('#video-play-big')
 	let videoPlay = player.querySelector('#video-play-mini')
 	let videoVolume = player.querySelector('#video-volume')
