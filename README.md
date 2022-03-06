@@ -1,5 +1,7 @@
 # Project link [Louvre](https://rolling-scopes-school.github.io/constantinetu-JSFE2021Q3/museum-dom/) (Desktop and mobile adaptive(768px) versions)
 
+### This landing page is a copy of the [Louvre](https://www.louvre.fr/en). This is my first major project with a huge number of different features.
+
 ***Used Technologies:***
 - HTML5
 - SCSS/SASS
