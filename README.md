@@ -1,6 +1,6 @@
 # Project link [Louvre](https://constantinetu.github.io/Louvre/) (Desktop and mobile adaptive versions)
 
-### This landing page is a copy of the [Louvre](https://www.louvre.fr/en). This is my first major project with a huge number of different features.
+### This landing page is a copy of the [Official Louvre](https://www.louvre.fr/en). This is my first major project with a huge number of different features.
 
 ***Used Technologies:***
 - HTML5
